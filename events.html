@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events | Ternaria Biosciences</title>
+  <meta name="description" content="Ternaria Biosciences' partnerships and funding — including our Women TechEU grant, Tækniþróunarsjóður (Technology Development Fund) support and Science Exchange storefront — plus the conferences and meetings where we connect with the RNA and developmental biology communities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #213a5d;
+      --teal:    #287890;
+      --teal-lt: #3b93ac;
+      --cyan:    #e8701f;
+      --ice:     #eef8fc;
+      --ice-lt:  #f7fbfd;
+      --white:   #ffffff;
+      --text:    #1a2e3d;
+      --muted:   #6b8694;
+      --border:  #dcedf5;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+      background: rgba(33,58,93,0.97); backdrop-filter: blur(12px);
+    }
+    .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links .active { color: var(--cyan) !important; }
+
+    .page-hero {
+      position: relative;
+      background: var(--navy);
+      padding: 9.5rem 2rem 4.5rem;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 48%;
+      background-image: url('images/kria/kria-02-flying-eel.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+    }
+    .page-hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(33,58,93,0.92) 0%, rgba(35,77,117,0.7) 55%, rgba(40,120,144,0.5) 100%);
+    }
+    @media (max-width: 800px) {
+      .page-hero-bg { width: 65%; opacity: 0.6; }
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -10%; right: -8%;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,112,31,0.18) 0%, transparent 70%);
+      z-index: 1;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--cyan); }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.35rem 0; margin-bottom: 1.5rem;
+    }
+    .page-hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; color: var(--white); margin-bottom: 1.25rem; max-width: 700px; }
+    .page-hero h1 em { font-style: italic; color: var(--cyan); text-transform: none; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 640px; line-height: 1.75; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--cyan); color: var(--navy); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, background 0.2s; }
+    .btn-primary:hover { background: #e88748; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.3); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--cyan); background: rgba(232,112,31,0.08); }
+
+    .stat-strip { background: var(--ice-lt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.6rem 2rem; }
+    .stat-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 2.5rem; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.9rem; color: var(--teal); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.85rem; }
+    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); line-height: 1.2; margin-bottom: 1.1rem; }
+    .section-title em { font-style: italic; color: var(--teal-lt); }
+    .section-desc { font-size: 1.02rem; color: var(--muted); max-width: 640px; line-height: 1.75; }
+
+    /* Partners & Funding */
+    .partners-section { background: var(--white); }
+    .partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2.5rem; }
+    .partner-card { background: var(--ice-lt); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem; }
+    .partner-card-wide { grid-column: 1 / -1; }
+    .partner-badge { height: 34px; margin-bottom: 1.25rem; display: block; }
+    .partner-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.35rem; font-weight: 400; color: var(--navy); margin-bottom: 0.9rem; }
+    .partner-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.9rem; }
+    .partner-stats { display: flex; gap: 1.75rem; margin: 1.25rem 0 1.5rem; }
+    .partner-stat-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; color: var(--teal); line-height: 1; margin-bottom: 0.2rem; }
+    .partner-stat-label { font-size: 0.7rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+    .partner-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: gap 0.2s; }
+    .partner-link:hover { gap: 0.7rem; }
+
+    /* Upcoming conferences */
+    .upcoming-section { background: var(--ice-lt); }
+    .upcoming-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .upcoming-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .upcoming-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .upcoming-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .upcoming-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.3; }
+    .upcoming-date { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.9rem; }
+    .upcoming-card a.conf-site-link { font-size: 0.85rem; font-weight: 600; color: var(--teal-lt); text-decoration: none; }
+    .upcoming-card a.conf-site-link:hover { color: var(--teal); }
+
+    /* Past conferences */
+    .past-section { background: var(--white); }
+    .conf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; margin-top: 2.5rem; }
+    .conf-card { display: block; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+    a.conf-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(33,58,93,0.12); }
+    .conf-card img { width: 100%; height: 110px; object-fit: cover; display: block; }
+    .conf-card span { display: block; padding: 0.7rem 0.85rem; font-size: 0.79rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+
+    .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.02rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); color: var(--teal); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.5); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
+
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; opacity: 0.85; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.55rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-bottom { max-width: 1100px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .partners-grid { grid-template-columns: 1fr; }
+      .upcoming-grid { grid-template-columns: 1fr 1fr; }
+      .conf-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 7rem 1.25rem 3rem; }
+      .upcoming-grid { grid-template-columns: 1fr; }
+      .conf-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      .stat-item { padding: 0.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#mission">Company</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Order</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Events</div>
+    <h1>Partnerships, funding <em>&amp; events.</em></h1>
+    <p>Our work is backed by EU and Icelandic technology funding grants, built on the strength of partnerships, and shared every year with the RNA and developmental biology communities at conferences across Europe and beyond.</p>
+    <div class="hero-actions">
+      <a href="mailto:sales@ternariabio.com?subject=Meet%20Ternaria%20-%20Website%20Inquiry" class="btn-primary">Get in touch</a>
+      <a href="index.html" class="btn-outline">← Back to home</a>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section" id="partners">
+  <div class="section-inner">
+    <span class="section-label">Recognition &amp; Partnerships</span>
+    <h2 class="section-title">Built with the right partners.</h2>
+    <p class="section-desc">We're proud to partner with organizations that help us scale our technology and reach the customers who need it.</p>
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <img class="partner-badge" src="https://static.wixstatic.com/media/9105b7_2a94fb8d601d476fb9b527a333694d28~mv2.jpg/v1/crop/x_0,y_36,w_910,h_471/fill/w_180,h_94,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/EN%20V%20Funded%20by%20the%20EU_POS_edited.jpg" alt="Funded by the European Union" />
+        <h3>Women TechEU program</h3>
+        <p>Ternaria Biosciences is a proud beneficiary of the Women TechEU program, funded by the European Union. Margrét Helga Ögmundsdóttir, co-founder, was awarded the Women TechEU grant — recognition of our technology and the work our team has driven forward.</p>
+        <div class="partner-stats">
+          <div><div class="partner-stat-value">3.5%</div><div class="partner-stat-label">Acceptance rate</div></div>
+          <div><div class="partner-stat-value">40</div><div class="partner-stat-label">of 1,100+ applicants</div></div>
+        </div>
+        <a class="partner-link" href="https://womentecheurope.eu/" target="_blank" rel="noopener">Learn more about Women TechEU →</a>
+      </div>
+
+      <div class="partner-card">
+        <img class="partner-badge" src="https://static.wixstatic.com/media/9105b7_f96df9d66f234772ac53e38fdcb2dfaa~mv2.png/v1/fill/w_180,h_156,al_c,lg_1,q_85,enc_avif,quality_auto/SE%20supplier%20badge%20x-large.png" alt="Science Exchange Supplier" />
+        <h3>Science Exchange supplier</h3>
+        <p>We've joined Science Exchange, enabling pharmaceutical and biotechnology organizations to seamlessly access our expertise through their existing procurement workflows — while benefiting from Science Exchange's streamlined contracting, compliance and payment infrastructure.</p>
+        <p>Find our storefront to order ArtPure™ enzymes, IVT kits and mRNAs directly through Science Exchange.</p>
+        <a class="partner-link" href="https://app.scienceexchange.com/s/account/001PK00000iumS6YAI/ternaria-biosciences?c__selectedTab=Services_And_Products" target="_blank" rel="noopener">Visit our storefront →</a>
+      </div>
+
+      <div class="partner-card partner-card-wide">
+        <img class="partner-badge" src="https://images.ctfassets.net/8k0h54kbe6bj/5a7pCGjh2GwYGG8NjnL0tq/370bea798c93b0d172ae640039eaf4ce/rannis-grunnutgafa.png" alt="Rannís — Tækniþróunarsjóður" style="height:94px; width:auto; object-fit:contain;" />
+        <h3>Icelandic Technology Fund grant recipient</h3>
+        <p>Ternaria Biosciences has received R&amp;D grant support from Tækniþróunarsjóður — Iceland's national Technology Development Fund for innovation-driven research. Administered by Rannís (The Icelandic Centre for Research) under the Ministry of Culture, Innovation and Higher Education, the fund backs projects like our AI-driven ArtPure™ enzyme platform from concept through to market.</p>
+        <a class="partner-link" href="https://en.rannis.is/funding/research/technology-development-fund/" target="_blank" rel="noopener">Learn more about the Technology Development Fund →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="upcoming-section" id="upcoming-events">
+  <div class="section-inner">
+    <span class="section-label">On the calendar</span>
+    <h2 class="section-title">Upcoming conferences and meetings.</h2>
+    <p class="section-desc">Come find us — we'll be presenting and connecting with the RNA and developmental biology communities at the following events.</p>
+
+    <div class="upcoming-grid">
+
+      <div class="upcoming-card">
+        <img src="https://static.wixstatic.com/media/9105b7_a8d9dd5b375a48b3a47a9fd4ce3accd5~mv2.png/v1/fill/w_440,h_280,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Prague.png" alt="Prague, Czech Republic" />
+        <div class="upcoming-body">
+          <h3>European Amphibian Conference 2026</h3>
+          <div class="upcoming-date">July 3–5 · Prague, Czech Republic</div>
+          <a class="conf-site-link" href="https://amphib-conf2026.sciencesconf.org/" target="_blank" rel="noopener">Conference site →</a>
+        </div>
+      </div>
+
+<div class="upcoming-card">
+        <img src="https://static.wixstatic.com/media/9105b7_a46f7fad96d6494ab0f4b6cd7ea2ae72~mv2.jpg/v1/fill/w_440,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Heidelberh.jpg" alt="Heidelberg, Germany" />
+        <div class="upcoming-body">
+          <h3>1st German Fish Model Research Meeting</h3>
+          <div class="upcoming-date">September 16–18, 2026 · Heidelberg University, Germany</div>
+          <a class="conf-site-link" href="https://www.germanfishmeeting.org/" target="_blank" rel="noopener">Conference site →</a>
+        </div>
+      </div>
+
+      <div class="upcoming-card">
+        <img src="https://static.wixstatic.com/media/9105b7_67bf35acc50747fa86e8c173cc31b5a5~mv2.webp/v1/fill/w_440,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20harbor.webp" alt="Boston, Massachusetts" />
+        <div class="upcoming-body">
+          <h3>14th International mRNA Health Conference</h3>
+          <div class="upcoming-date">November 2026 · Boston, USA</div>
+          <a class="conf-site-link" href="https://mrna-conference.com/" target="_blank" rel="noopener">Conference site →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="past-section" id="past-events">
+  <div class="section-inner">
+    <span class="section-label">Where we've been</span>
+    <h2 class="section-title">Past conferences and meetings.</h2>
+    <p class="section-desc">A look back at the conferences, meetings and delegations Ternaria has taken part in over the past year.</p>
+
+    <div class="conf-grid">
+
+      <a class="conf-card" href="https://informaconnect.com/lsx-nordic-congress/" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn%20Copenhagen%202.jpg?width=403" alt="Copenhagen, Denmark" />
+        <span>LSX Nordics, Copenhagen — May 2026</span>
+      </a>
+
+      <div class="conf-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20view%20of%20Gamla%20Stan%2C%20Stockholm.jpg?width=403" alt="Stockholm, Sweden" />
+        <span>Strengthening the Nordic Vaccine R&amp;D and Manufacturing Ecosystem, Stockholm — Dec 2025</span>
+      </div>
+
+      <a class="conf-card" href="https://mrna-conference.com/" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_366085b7b78c4e2fae11d69ff265a25b~mv2.avif/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/berlin-skyline.avif" alt="13th International mRNA Health Conference, Berlin" />
+        <span>13th International mRNA Health Conference, Berlin — Nov 11–13, 2025</span>
+      </a>
+
+      <a class="conf-card" href="https://www.frenchzebrafishmeeting.fr/" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_9d7407f8b2ab4f749550cac9b76866cc~mv2.png/v1/fill/w_403,h_334,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Skj%C3%A1mynd%202025-12-01%20153701.png" alt="Nordic Zebrafish meeting" />
+        <span>Nordic Zebrafish Meeting — Nov 12–14, 2025</span>
+      </a>
+
+      <a class="conf-card" href="https://www.frenchzebrafishmeeting.fr/" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_90df4cb1752b4f31a5c48e9f37ef0544~mv2.avif/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/toulouse-bords-de-garonne-grave-600x777.avif" alt="French Zebrafish Meeting, Toulouse" />
+        <span>French Zebrafish Meeting, Toulouse — Oct 29–31, 2025</span>
+      </a>
+
+      <div class="conf-card">
+        <img src="https://static.wixstatic.com/media/9105b7_c9848c6f8ffe4bbcb5a3d431b8cccf6a~mv2.avif/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Aarhus.avif" alt="Danish RNA Society Meeting" />
+        <span>Danish RNA Society Meeting — Oct 23, 2025</span>
+      </div>
+
+      <div class="conf-card">
+        <img src="https://static.wixstatic.com/media/9105b7_3dd7b685ae0a4a42b3295aa34c249147~mv2.avif/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Gothenburg.avif" alt="Nordic Life Science, Gothenburg" />
+        <span>Nordic Life Science, Gothenburg — Oct 13–14, 2025</span>
+      </div>
+
+      <a class="conf-card" href="https://convention.bio.org/bio-2025" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_f763afcbe5a3428aa95123a826427250~mv2.png/v1/fill/w_403,h_334,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Skj%C3%A1mynd%202025-05-26%20111036.png" alt="BIO International Convention 2025" />
+        <span>BIO International Convention 2025</span>
+      </a>
+
+      <a class="conf-card" href="https://www.izfs.org/education/19izfc" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Skyline%20of%20Madison%2C%20Wisconsin%20(cropped).jpg?width=403" alt="Madison, Wisconsin skyline" />
+        <span>19th International Zebrafish Conference</span>
+      </a>
+
+      <a class="conf-card" href="https://www.cancersummit.ca/about/summit4ci-2025" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_2d9c483f12ac4d33baddbcc904f373b0~mv2.avif/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Toronto.avif" alt="Summit4CI Cancer Immunotherapy Summit, Toronto" />
+        <span>Summit4CI Cancer Immunotherapy Summit, Toronto</span>
+      </a>
+
+      <div class="conf-card">
+        <img src="https://static.wixstatic.com/media/9105b7_69992a8458d7488db372d6d63cfc6083~mv2.png/v1/fill/w_403,h_334,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Skj%C3%A1mynd%202025-05-09%20092735.png" alt="Iceland-Sweden Business Delegation to Stockholm" />
+        <span>Iceland–Sweden Business Delegation with President Halla Tómasdóttir, Stockholm</span>
+      </div>
+
+      <div class="conf-card">
+        <img src="https://static.wixstatic.com/media/9105b7_990332704f3f469d84a264284bbbca07~mv2.jpeg/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/berlin-skyline.jpeg" alt="3rd Annual mRNA-Based Therapeutics Summit, Berlin" />
+        <span>3rd Annual mRNA-Based Therapeutics Summit, Berlin</span>
+      </div>
+
+      <div class="conf-card">
+        <img src="https://static.wixstatic.com/media/9105b7_67bf35acc50747fa86e8c173cc31b5a5~mv2.webp/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20harbor.webp" alt="12th International mRNA Health Conference, Boston" />
+        <span>12th International mRNA Health Conference, Boston</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to meet us at an upcoming event?</h2>
+    <p>Get in touch and we'll let you know which conferences and meetings we'll be attending next.</p>
+    <div class="cta-actions">
+      <a href="mailto:sales@ternariabio.com?subject=Meet%20Ternaria%20-%20Website%20Inquiry" class="btn-white">Get in touch</a>
+      <a href="artpure.html" class="btn-outline-white">Explore ArtPure™ technology</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/2ff737_dc8a2bf025434a0793b0f50e2b94d98b~mv2.png" alt="Ternaria Biosciences" />
+      <p>Ternaria Biosciences develops next-generation RNA technologies from Iceland, powered by the ArtPure™ platform.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="artpure.html">ArtPure™ overview</a>
+      <a href="artpure.html#how-it-works">How it works</a>
+      <a href="artpure.html#performance">Performance data</a>
+      <a href="index.html#platform">Novel enzyme discovery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="rna-polymerases.html">RNA Polymerases</a>
+      <a href="kits.html">IVT &amp; Transcription Kits</a>
+      <a href="mrna.html">mRNA</a>
+      <a href="index.html#contact">Custom mRNA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About Ternaria</a>
+      <a href="index.html#team">Team</a>
+      <a href="events.html">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ternaria Biosciences ehf. All rights reserved.</span>
+    <span>Reykjavik, Iceland</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+   

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IVT &amp; Transcription Kits | Ternaria Biosciences</title>
+  <meta name="description" content="Complete in vitro transcription kits powered by ArtPure™ enzymes — T7 RNA Synthesis Kit and ZebraScribe capped mRNA transcription kits." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #213a5d;
+      --teal:    #287890;
+      --teal-lt: #3b93ac;
+      --cyan:    #e8701f;
+      --ice:     #eef8fc;
+      --ice-lt:  #f7fbfd;
+      --white:   #ffffff;
+      --text:    #1a2e3d;
+      --muted:   #6b8694;
+      --border:  #dcedf5;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+      background: rgba(33,58,93,0.97); backdrop-filter: blur(12px);
+    }
+    .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links .active { color: var(--cyan) !important; }
+
+    .page-hero {
+      position: relative;
+      background: var(--navy);
+      padding: 9.5rem 2rem 4.5rem;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 48%;
+      background-image: url('images/kria/kria-03-diving-water.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+    }
+    .page-hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(33,58,93,0.92) 0%, rgba(35,77,117,0.7) 55%, rgba(40,120,144,0.5) 100%);
+    }
+    @media (max-width: 800px) {
+      .page-hero-bg { width: 65%; opacity: 0.6; }
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -10%; right: -8%;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,112,31,0.18) 0%, transparent 70%);
+      z-index: 1;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--cyan); }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.35rem 0; margin-bottom: 1.5rem;
+    }
+    .page-hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; color: var(--white); margin-bottom: 1.25rem; max-width: 700px; }
+    .page-hero h1 em { font-style: italic; color: var(--cyan); }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 640px; line-height: 1.75; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--cyan); color: var(--navy); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, background 0.2s; }
+    .btn-primary:hover { background: #e88748; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.3); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--cyan); background: rgba(232,112,31,0.08); }
+
+    .stat-strip { background: var(--ice-lt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.6rem 2rem; }
+    .stat-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 2.5rem; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.9rem; color: var(--teal); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-label em { text-transform: lowercase; }
+
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.85rem; }
+    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); line-height: 1.2; margin-bottom: 1.1rem; }
+    .section-title em { font-style: italic; color: var(--teal-lt); }
+    .section-desc { font-size: 1.02rem; color: var(--muted); max-width: 640px; line-height: 1.75; }
+
+    .quality-section { background: var(--white); }
+    .quality-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .quality-card { background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+    .quality-card svg { width: 26px; height: 26px; stroke: var(--teal-lt); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 0.85rem; }
+    .quality-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .quality-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    .products-section { background: var(--ice-lt); }
+    .variant-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .variant-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem 2.25rem; display: grid; grid-template-columns: 220px 1.3fr 1fr; gap: 2rem;
+      align-items: start; position: relative; overflow: hidden;
+    }
+    .variant-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--teal), var(--cyan)); }
+    .variant-photo { width: 100%; height: 220px; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); }
+    .variant-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .variant-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--navy); }
+    .variant-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-lt); background: rgba(59,147,172,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; }
+    .variant-card p.variant-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .variant-formats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .format-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 10px; padding: 0.65rem 1rem; font-size: 0.82rem; }
+    .format-row .fmt-name { font-weight: 600; color: var(--navy); }
+    .format-row .fmt-sku { color: var(--muted); font-size: 0.78rem; }
+    .variant-cta { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.6rem; border-left: 1px solid var(--border); padding-left: 2rem; }
+    .variant-cta-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    .variant-cta a { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: gap 0.2s; }
+    .variant-cta a:hover { gap: 0.7rem; }
+
+    .kit-includes { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .include-pill { font-size: 0.74rem; color: var(--teal); background: rgba(40,120,144,0.07); border: 1px solid rgba(40,120,144,0.15); padding: 0.3rem 0.7rem; border-radius: 999px; }
+
+    /* Accordion group cards */
+    .kit-group {
+      background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; position: relative;
+    }
+    .kit-group::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--teal), var(--cyan)); z-index: 1; }
+    .kit-group-header {
+      display: grid; grid-template-columns: 220px 1.3fr 1fr; gap: 2rem;
+      align-items: start; padding: 2rem 2.25rem;
+      cursor: pointer; user-select: none;
+    }
+    .kit-group-header:hover { background: var(--ice-lt); }
+    .kit-group-toggle {
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      gap: 0.6rem; border-left: 1px solid var(--border); padding-left: 2rem;
+    }
+    .kit-group-toggle-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    .kit-group-toggle-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--cyan); font-weight: 700; font-size: 0.9rem;
+      border: none; background: none; cursor: pointer; padding: 0;
+      font-family: inherit;
+    }
+    .kit-group-toggle-btn svg { transition: transform 0.3s ease; flex-shrink: 0; }
+    .kit-group.open .kit-group-toggle-btn svg { transform: rotate(180deg); }
+
+    .kit-subvariants {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--ice-lt);
+      padding: 1.5rem 2.25rem;
+    }
+    .kit-group.open .kit-subvariants { display: block; }
+
+    .subvariant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .subvariant-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.25rem 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .subvariant-card:hover { border-color: var(--teal-lt); box-shadow: 0 4px 12px rgba(40,120,144,0.08); }
+    .subvariant-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-lt); background: rgba(59,147,172,0.1); padding: 0.2rem 0.5rem; border-radius: 5px; align-self: flex-start; }
+    .subvariant-card h4 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--navy); line-height: 1.3; }
+    .subvariant-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.55; flex: 1; }
+    .subvariant-skus { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.25rem; }
+    .subvariant-sku-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.7rem; }
+    .subvariant-sku-row .sku-size { font-weight: 600; color: var(--navy); }
+    .subvariant-sku-row .sku-code { color: var(--muted); font-size: 0.7rem; }
+    .subvariant-quote { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--teal-lt); font-weight: 600; font-size: 0.82rem; text-decoration: none; margin-top: 0.25rem; transition: gap 0.2s; }
+    .subvariant-quote:hover { gap: 0.6rem; }
+
+    @media (max-width: 800px) {
+      .variant-card { grid-template-columns: 1fr; }
+      .variant-photo { height: 200px; }
+      .variant-cta { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 1.25rem; }
+      .kit-group-header { grid-template-columns: 1fr; }
+      .kit-group-toggle { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 1.25rem; }
+      .subvariant-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .subvariant-grid { grid-template-columns: 1fr; }
+    }
+
+    .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.02rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); color: var(--teal); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.5); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
+
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; opacity: 0.85; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.55rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-bottom { max-width: 1100px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .quality-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 7rem 1.25rem 3rem; }
+      .quality-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#products" class="active">Products</a></li>
+    <li><a href="index.html#mission">Company</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Order</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a> &nbsp;/&nbsp; Kits</div>
+    <div class="hero-badge">Ready to order</div>
+    <h1>IVT &amp; transcription<br><em>kits.</em></h1>
+    <p>Complete, ready-to-use kits for reproducible <em>in vitro</em> transcription — optimised buffers, nucleotides, control template and ArtPure™ enzymes in a single workflow, including capped mRNA synthesis for downstream translation studies.</p>
+    <div class="hero-actions">
+      <a href="mailto:sales@ternariabio.com?subject=IVT%20%26%20Transcription%20Kits%20-%20Website%20Inquiry" class="btn-primary">Request a quote</a>
+      <a href="index.html#products" class="btn-outline">← Back to all products</a>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item"><span class="stat-value">&gt;99%</span><span class="stat-label">Enzyme purity</span></div>
+    <div class="stat-item"><span class="stat-value">5-in-1</span><span class="stat-label">Complete kit</span></div>
+    <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">Pack sizes per kit</span></div>
+    <div class="stat-item"><span class="stat-value">CoA</span><span class="stat-label">Certificate with every batch</span></div>
+  </div>
+</div>
+
+<section class="products-section">
+  <div class="section-inner">
+    <span class="section-label">Catalog</span>
+    <h2 class="section-title">Available kits.</h2>
+    <p class="section-desc">ARCA kits available in 25 or 50 reactions; Co Cap™ A kits in 10 or 25 reactions. All kits are stable at −20°C for up to 12 months. Get in touch for pricing or bulk quantities.</p>
+
+    <div class="variant-grid">
+
+      <!-- 1. T7 RNA Synthesis Kit — standalone -->
+      <div class="variant-card">
+        <img class="variant-photo" src="https://static.wixstatic.com/media/2ff737_edfe09e45d7f421fbf86f3e206a9ef11~mv2.jpg/v1/crop/x_675,y_0,w_2699,h_2699/fill/w_440,h_440,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/skogafoss-best-iceland-waterfalls-picjumbo-com.jpg" alt="T7 RNA Synthesis Kit" />
+        <div>
+          <div class="variant-head"><h3>T7 RNA Synthesis Kit</h3><span class="variant-tag">Unmodified RNA</span></div>
+          <p class="variant-desc">Flexible, high-yield RNA synthesis via <em>in vitro</em> transcription with ArtPure™ T7 RNA Polymerase. Each reaction yields roughly 100–120 µg of RNA after a 2-hour incubation — suitable for RNA structure and function studies, microinjection, transfection, <em>in situ</em> hybridization, and <em>in vitro</em> translation.</p>
+          <div class="kit-includes">
+            <span class="include-pill">T7 RNAP enzyme mix</span>
+            <span class="include-pill">Individual NTPs</span>
+            <span class="include-pill">Reaction buffer</span>
+            <span class="include-pill">Control DNA template</span>
+            <span class="include-pill">DNase I + EDTA</span>
+          </div>
+          <div class="variant-formats" style="margin-top:1rem;">
+            <div class="format-row"><span class="fmt-name">25 reactions</span><span class="fmt-sku">KS07025</span></div>
+            <div class="format-row"><span class="fmt-name">50 reactions</span><span class="fmt-sku">KS07050</span></div>
+          </div>
+        </div>
+        <div class="variant-cta">
+          <span class="variant-cta-label">2 pack sizes</span>
+          <a href="t7-rna-synthesis-kit.html">View details →</a>
+          <a href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Synthesis%20Kit%20-%20Website%20Inquiry">Request a quote →</a>
+        </div>
+      </div>
+
+      <!-- 2. NorthScribe — accordion group -->
+      <div class="kit-group" id="group-northscribe">
+        <div class="kit-group-header" onclick="toggleGroup('group-northscribe')">
+          <img class="variant-photo" src="https://static.wixstatic.com/media/9105b7_1f1c3a2219ff41acab030460c1dfbeca~mv2.jpg/v1/crop/x_1000,y_0,w_4000,h_4000/fill/w_440,h_440,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/adam-jang-MLKrf51NV8w-unsplash.jpg" alt="NorthScribe Transcription Kit" />
+          <div>
+            <div class="variant-head"><h3>NorthScribe™ Transcription Kit</h3><span class="variant-tag">Capped mRNA</span></div>
+            <p class="variant-desc">High-yield capped mRNA via <em>in vitro</em> transcription. ARCA variants (Cap-0, 20–25 µg/rxn) available with T7 or SP6 polymerase; Co-Cap™ A variants (Cap-1, 160–180 µg/rxn) with T7 polymerase — all with or without m¹Ψ nucleotides. Validated in zebrafish and salmon.</p>
+            <div class="kit-includes">
+              <span class="include-pill">T7 or SP6 RNAP</span>
+              <span class="include-pill">Cap analog included</span>
+              <span class="include-pill">5× NTP mix or individual vials</span>
+              <span class="include-pill">Reaction buffer</span>
+              <span class="include-pill">Control template</span>
+            </div>
+          </div>
+          <div class="kit-group-toggle">
+            <span class="kit-group-toggle-label">4 variants</span>
+            <button class="kit-group-toggle-btn" type="button">
+              Expand
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="kit-subvariants">
+          <div class="subvariant-grid">
+
+            <div class="subvariant-card">
+              <span class="subvariant-tag">ARCA · Cap-0</span>
+              <h4>NorthScribe™ ARCA</h4>
+              <p>ARCA-capped (Cap-0) mRNA, 20–25 µg per reaction. T7 and SP6 polymerase options; nucleotides and ARCA available as a 5× mix or individual vials for modified-nucleotide flexibility. Validated in zebrafish and salmon.</p>
+              <div class="subvariant-skus">
+                <div class="subvariant-sku-row"><span class="sku-size">25 rxn (T7)</span><span class="sku-code">AKT07025</span></div>
+                <div class="subvariant-sku-row"><span class="sku-size">50 rxn (T7)</span><span class="sku-code">AKT07050</span></div>
+                <div class="subvariant-sku-row"><span class="sku-size">25 rxn (SP6)</span><span class="sku-code">AKT06025</span></div>
+                <div class="subvariant-sku-row"><span class="sku-size">50 rxn (SP6)</span><span class="sku-code">AKT06050</span></div>
+              </div>
+              <a class="subvariant-quote" href="mailto:sales@ternariabio.com?subject=NorthScribe%20ARCA%20-%20Website%20Inquiry">Request a quote →</a>
+            </div>
+
+            <div class="subvariant-card">
+              <span class="subvariant-tag">m¹Ψ-ARCA · Cap-0</span>
+              <h4>NorthScribe™ m¹Ψ-ARCA</h4>
+              <p>ARCA cap combined with N¹-methylpseudouridine (m¹Ψ). Improves transcript stability, minimizes immunogenicity, and enhances translation efficiency compared to unmodified ARCA mRNA.</p>
+              <div class="subvariant-skus">
+                <div class="subvariant-sku-row"><span class="sku-size">25 rxn (T7)</span><span class="sku-code">AKT17025</span></div>
+                <div class="subvariant-sku-row"><span class="sku-size">50 rxn (T7)</span><span cl

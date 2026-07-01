@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mRNA | Ternaria Biosciences</title>
+  <meta name="description" content="Off-the-shelf and custom mRNA produced with ArtPure™ technology — eGFP mRNA available now, custom sequence, modification and scale on request." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #213a5d;
+      --teal:    #287890;
+      --teal-lt: #3b93ac;
+      --cyan:    #e8701f;
+      --ice:     #eef8fc;
+      --ice-lt:  #f7fbfd;
+      --white:   #ffffff;
+      --text:    #1a2e3d;
+      --muted:   #6b8694;
+      --border:  #dcedf5;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+      background: rgba(33,58,93,0.97); backdrop-filter: blur(12px);
+    }
+    .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links .active { color: var(--cyan) !important; }
+
+    .page-hero {
+      position: relative;
+      background: var(--navy);
+      padding: 9.5rem 2rem 4.5rem;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 48%;
+      background-image: url('images/kria/kria-02-flying-eel.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+    }
+    .page-hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(33,58,93,0.92) 0%, rgba(35,77,117,0.7) 55%, rgba(40,120,144,0.5) 100%);
+    }
+    @media (max-width: 800px) {
+      .page-hero-bg { width: 65%; opacity: 0.6; }
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -10%; right: -8%;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,112,31,0.18) 0%, transparent 70%);
+      z-index: 1;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--cyan); }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.35rem 0; margin-bottom: 1.5rem;
+    }
+    .page-hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; color: var(--white); margin-bottom: 1.25rem; max-width: 700px; }
+    .page-hero h1 em { font-style: italic; color: var(--cyan); text-transform: none; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 640px; line-height: 1.75; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--cyan); color: var(--navy); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, background 0.2s; }
+    .btn-primary:hover { background: #e88748; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.3); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--cyan); background: rgba(232,112,31,0.08); }
+
+    .stat-strip { background: var(--ice-lt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.6rem 2rem; }
+    .stat-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 2.5rem; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.9rem; color: var(--teal); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-label em { text-transform: lowercase; }
+
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.85rem; }
+    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); line-height: 1.2; margin-bottom: 1.1rem; }
+    .section-title em { font-style: italic; color: var(--teal-lt); }
+    .section-desc { font-size: 1.02rem; color: var(--muted); max-width: 640px; line-height: 1.75; }
+
+    .quality-section { background: var(--white); }
+    .quality-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .quality-card { background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+    .quality-card svg { width: 26px; height: 26px; stroke: var(--teal-lt); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 0.85rem; }
+    .quality-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .quality-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    .products-section { background: var(--ice-lt); }
+    .variant-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .variant-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem 2.25rem; display: grid; grid-template-columns: 220px 1.3fr 1fr; gap: 2rem;
+      align-items: start; position: relative; overflow: hidden;
+    }
+    .variant-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--teal), var(--cyan)); }
+    .variant-card.variant-pending::before { background: var(--border); }
+    .variant-photo { width: 100%; height: 220px; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); }
+    .variant-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .variant-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--navy); }
+    .variant-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-lt); background: rgba(59,147,172,0.1); padding: 0.25rem 0.6rem; border-radius: 6px; }
+    .variant-tag.tag-soon { color: var(--muted); background: rgba(90,115,130,0.1); }
+    .variant-card p.variant-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .variant-cta { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.6rem; border-left: 1px solid var(--border); padding-left: 2rem; }
+    .variant-cta-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    .variant-cta a { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: gap 0.2s; }
+    .variant-cta a:hover { gap: 0.7rem; }
+
+    @media (max-width: 800px) {
+      .variant-card { grid-template-columns: 1fr; }
+      .variant-photo { height: 200px; }
+      .variant-cta { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 1.25rem; }
+    }
+
+    .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.02rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); color: var(--teal); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.5); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
+
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; opacity: 0.85; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.55rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-bottom { max-width: 1100px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .quality-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 7rem 1.25rem 3rem; }
+      .quality-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#products" class="active">Products</a></li>
+    <li><a href="index.html#mission">Company</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Order</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a> &nbsp;/&nbsp; mRNA</div>
+    <div class="hero-badge">Ready to order &amp; custom</div>
+    <h1>Off-the-shelf &amp;<br><em style="text-transform:none;">custom mRNA.</em></h1>
+    <p>mRNA produced with our ArtPure™ enzymes. Order ready-to-use reporter mRNA today, or work with us on a custom sequence, modification and scale — with a room-temperature shipping option available.</p>
+    <div class="hero-actions">
+      <a href="mailto:sales@ternariabio.com?subject=mRNA%20-%20Website%20Inquiry" class="btn-primary">Send your requirements</a>
+      <a href="index.html#products" class="btn-outline">← Back to all products</a>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item"><span class="stat-value">&gt;99%</span><span class="stat-label">Enzyme purity behind every batch</span></div>
+    <div class="stat-item"><span class="stat-value">RT</span><span class="stat-label">Shipping option available</span></div>
+  </div>
+</div>
+
+<section class="products-section">
+  <div class="section-inner">
+    <span class="section-label">Catalog</span>
+    <h2 class="section-title">Available mRNA.</h2>
+    <p class="section-desc">Reporter mRNA is available now for applied research; additional reporters and fully custom constructs are available on request.</p>
+
+    <div class="variant-grid">
+
+      <div class="variant-card">
+        <img class="variant-photo" src="https://static.wixstatic.com/media/9105b7_34d4dbfd01d345bf9cdff74b776564a0~mv2.jpg/v1/crop/x_912,y_0,w_3648,h_3648/fill/w_440,h_440,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nicolas-j-leclercq-va_nrBLonf8-unsplash.jpg" alt="eGFP mRNA" />
+        <div>
+          <div class="variant-head"><h3>eGFP mRNA</h3><span class="variant-tag">Available now</span></div>
+          <p class="variant-desc">Green Fluorescent Protein (eGFP) mRNA produced with ArtPure™ technology and our specialized transcription kit, for applied research use. GFP is a 238-amino-acid bioluminescent protein from the jellyfish <em>Aequorea victoria</em>, fluorescing at ~510 nm when excited at ~488 nm with no cofactors required — a workhorse reporter across cell biology and physiology.</p>
+        </div>
+        <div class="variant-cta">
+          <span class="variant-cta-label">Ready to order</span>
+          <a href="egfp-mrna.html">View details →</a>
+          <a href="mailto:sales@ternariabio.com?subject=eGFP%20mRNA%20-%20Website%20Inquiry">Send your requirements →</a>
+        </div>
+      </div>
+
+      <div class="variant-card variant-pending">
+        <img class="variant-photo" src="https://static.wixstatic.com/media/d33207_783f4a663d8044e2a156065f065ef738~mv2.jpg/v1/crop/x_420,y_0,w_1080,h_1080/fill/w_440,h_440,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/kirkjufell-3092048_1920.jpg" alt="Red Fluorescent Protein mRNA" />
+        <div>
+          <div class="variant-head"><h3>Red Fluorescent Protein mRNA</h3><span class="variant-tag tag-soon">Coming soon</span></div>
+          <p class="variant-desc">A red-fluorescent reporter mRNA, produced to the same ArtPure™ standard as our eGFP mRNA. Currently in development — get in touch to be notified when it's available, or to discuss your timeline.</p>
+        </div>
+        <div class="variant-cta">
+          <span class="variant-cta-label">Coming soon</span>
+          <a href="mailto:sales@ternariabio.com?subject=RFP%20mRNA%20-%20Website%20Inquiry">Get notified →</a>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <img class="variant-photo" src="https://static.wixstatic.com/media/9105b7_e1645e4e357642eba7a6e3b47325323d~mv2.jpg/v1/crop/x_0,y_1000,w_4000,h_4000/fill/w_440,h_440,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/jonny-auh-z99iWocuDt0-unsplash.jpg" alt="Customized mRNA" />
+        <div>
+          <div class="variant-head"><h3>Customized mRNA</h3><span class="variant-tag">Built to spec</span></div>
+          <p class="variant-desc">Customized mRNA produced with our ArtPure™ technology and specialized transcription kits, built around your sequence, modification, and scale requirements — from research-grade quantities to larger production runs.</p>
+        </div>
+        <div class="variant-cta">
+          <span class="variant-cta-label">Tell us your requirements</span>
+          <a href="customized-mrna.html">View details →</a>
+          <a href="mailto:sales@ternariabio.com?subject=Customized%20mRNA%20-%20Website%20Inquiry">Send your requirements →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="quality-section">
+  <div class="section-inner">
+    <span class="section-label">Why ArtPure™ mRNA</span>
+    <h2 class="section-title">Built on the same purity standard, <em>start to finish.</em></h2>
+    <p class="section-desc">Every mRNA product we ship is produced using our own ArtPure™ polymerases, ZebraScribe kits and optimized IVT conditions — so the purity and capping efficiency that define our enzymes carry straight through to your transcript.</p>
+    <div class="quality-grid">
+      <div class="quality-card">
+        <svg viewBox="0 0 24 24"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+        <h4>ArtPure™ enzymes throughout</h4>
+        <p>Produced with &gt;99% pure, animal origin-free polymerases — no proteinase, RNase or DNase contamination.</p>
+      </div>
+      <div class="quality-card">
+        <svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
+        <h4>Room-temperature option</h4>
+        <p>A room-temperature shipping option is available for mRNA, in addition to standard cold-chain shipment.</p>
+      </div>
+      <div class="quality-card">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <h4>Custom by design</h4>
+        <p>Sequence, modification, and scale defined together with our team — from design to delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Have a specific construct in mind?</h2>
+    <p>Send us your sequence, modification, and scale requirements and we'll get back to you with a plan.</p>
+    <div class="cta-actions">
+      <a href="mailto:sales@ternariabio.com?subject=mRNA%20-%20Website%20Inquiry" class="btn-white">Send your requirements</a>
+      <a href="artpure.html" class="btn-outline-white">Explore ArtPure™ technology</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/2ff737_dc8a2bf025434a0793b0f50e2b94d98b~mv2.png" alt="Ternaria Biosciences" />
+      <p>Ternaria Biosciences develops next-generation RNA technologies from Iceland, powered by the ArtPure™ platform.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="artpure.html">ArtPure™ overview</a>
+      <a href="artpure.html#how-it-works">How it works</a>
+      <a href="artpure.html#performance">Performance data</a>
+      <a href="index.html#platform">Novel enzyme discovery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="rna-polymerases.html">RNA Polymerases</a>
+      <a href="kits.html">IVT &amp; Transcription Kits</a>
+      <a href="mrna.html">mRNA</a>
+      <a href="index.html#contact">Custom mRNA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About Ternaria</a>
+      <a href="index.html#team">Team</a>
+      <a href="events.html">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ternaria Biosciences ehf. All rights reserved.</span>
+    <span>Reykjavik, Iceland</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

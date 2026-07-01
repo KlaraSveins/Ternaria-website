@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T7 RNA Polymerase (Glycerol-based) | Ternaria Biosciences</title>
+  <meta name="description" content="ArtPure™ T7 RNA Polymerase, glycerol-based format — >99% pure, animal origin-free enzyme for in vitro transcription. SKUs Z0711, Z0713, Z071X." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #213a5d;
+      --teal:    #287890;
+      --teal-lt: #3b93ac;
+      --cyan:    #e8701f;
+      --ice:     #eef8fc;
+      --ice-lt:  #f7fbfd;
+      --white:   #ffffff;
+      --text:    #1a2e3d;
+      --muted:   #6b8694;
+      --border:  #dcedf5;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 70px;
+      background: rgba(33,58,93,0.97);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links .active { color: var(--cyan) !important; }
+
+
+    /* ── BREADCRUMB / PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--navy);
+      padding: 9.5rem 2rem 4.5rem;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 48%;
+      background-image: url('images/kria/kria-08-diving-blue-sky.jpg');
+      background-size: cover;
+      background-position: center 35%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 38%);
+    }
+
+    .page-hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(33,58,93,0.92) 0%, rgba(35,77,117,0.7) 55%, rgba(40,120,144,0.5) 100%);
+    }
+
+    @media (max-width: 800px) {
+      .page-hero-bg { width: 65%; opacity: 0.6; }
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -8%;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,112,31,0.18) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--cyan); }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.35rem 0; margin-bottom: 1.5rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--cyan); }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--cyan); color: var(--navy);
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      padding: 0.85rem 1.8rem; border-radius: var(--radius);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-primary:hover { background: #e88748; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--white);
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      padding: 0.85rem 1.8rem; border: 1.5px solid rgba(255,255,255,0.3); border-radius: var(--radius);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--cyan); background: rgba(232,112,31,0.08); }
+
+    /* ── STAT STRIP ── */
+    .stat-strip { background: var(--ice-lt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.6rem 2rem; }
+    .stat-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 2.5rem; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.9rem; color: var(--teal); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-label em { text-transform: lowercase; }
+
+    /* ── SECTION SHELLS ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.85rem; }
+    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); line-height: 1.2; margin-bottom: 1.1rem; }
+    .section-title em { font-style: italic; color: var(--teal-lt); }
+    .section-desc { font-size: 1.02rem; color: var(--muted); max-width: 640px; line-height: 1.75; }
+
+    /* ── QUICK LINKS ── */
+    .quick-links-section { background: var(--white); padding-top: 4rem; padding-bottom: 1rem; }
+    .quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .quick-link-card {
+      background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.4rem 1.3rem; text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+    }
+    .quick-link-card:hover { border-color: var(--teal-lt); transform: translateY(-2px); }
+    .quick-link-card .qn-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.5rem; display: block; }
+    .quick-link-card .qn-title { font-weight: 600; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .quick-link-card .qn-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── PROTOCOL ── */
+    .protocol-section { background: var(--ice-lt); }
+    .protocol-table-wrap { margin-top: 2rem; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    table.protocol-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; background: var(--white); }
+    table.protocol-table th { background: var(--navy); color: #fff; text-align: left; padding: 0.85rem 1.25rem; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+    table.protocol-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border); color: var(--text); }
+    table.protocol-table tr:last-child td { border-bottom: none; }
+    table.protocol-table tr:nth-child(even) td { background: var(--ice-lt); }
+
+    .protocol-steps { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .protocol-step { display: flex; gap: 0.9rem; align-items: flex-start; font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+    .protocol-step .step-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--teal-lt); color: #fff; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+    /* ── QUALITY ── */
+    .quality-img-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .quality-img-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; text-align: center; }
+    .quality-img-card img { width: 100%; height: 160px; object-fit: contain; border-radius: 8px; margin-top: 0.75rem; background: var(--ice-lt); }
+    .quality-img-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .definitions-block { margin-top: 3rem; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px; padding: 2rem 2.25rem; }
+    .definitions-block h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 1.25rem; font-weight: 400; }
+    .definition-item { margin-bottom: 1rem; font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .definition-item:last-child { margin-bottom: 0; }
+    .definition-item strong { color: var(--navy); }
+
+    .coa-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem;
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 1.25rem; text-decoration: none; color: var(--teal-lt); font-weight: 600; font-size: 0.88rem;
+      transition: border-color 0.2s;
+    }
+    .coa-link:hover { border-color: var(--teal-lt); }
+
+    /* ── PRODUCT INFO ── */
+    .info-section { background: var(--ice-lt); }
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .spec-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.75rem; }
+    .spec-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+    .spec-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── ORDER ── */
+    table.order-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    table.order-table th { background: var(--navy); color: #fff; text-align: left; padding: 1rem 1.25rem; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+    table.order-table td { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+    table.order-table tr:last-child td { border-bottom: none; }
+    table.order-table .fmt-sku { color: var(--muted); font-size: 0.85rem; }
+    table.order-table .ord-btn { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+    table.order-table .ord-btn:hover { gap: 0.65rem; }
+
+    /* ── CTA SECTION ── */
+    .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.02rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); color: var(--teal);
+      font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white);
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem;
+      border: 1.5px solid rgba(255,255,255,0.5); border-radius: var(--radius);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.12); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; opacity: 0.85; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.55rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cyan); }
+    .footer-bottom { max-width: 1100px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .quick-links { grid-template-columns: 1fr 1fr; }
+      .quality-img-grid { grid-template-columns: 1fr 1fr; }
+      .spec-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 7rem 1.25rem 3rem; }
+      .quick-links { grid-template-columns: 1fr; }
+      .quality-img-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      table.protocol-table, table.order-table { font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#products" class="active">Products</a></li>
+    <li><a href="index.html#mission">Company</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Order</a></li>
+  </ul>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a> &nbsp;/&nbsp; <a href="rna-polymerases.html">RNA Polymerases</a> &nbsp;/&nbsp; T7 RNA Polymerase (Glycerol)</div>
+    <div class="hero-badge">Glycerol-based · Ready to order</div>
+    <h1>T7 RNA Polymerase<br><em>Glycerol-based.</em></h1>
+    <p>A highly processive enzyme that shows specificity for its double-stranded promoter sequence (5′ TAATACGACTCACTATAG 3′) and catalyzes the 5′→3′ synthesis of RNA. Purified using our ArtPure™ proprietary purification process, yielding a &gt;99% pure, animal origin-free product free of contaminating proteinases, RNases and DNases — with no added enzyme inhibitors.</p>
+    <div class="hero-actions">
+      <a href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Polymerase%20(Glycerol-based)%20-%20Website%20Inquiry" class="btn-primary">Request a quote</a>
+      <a href="rna-polymerases.html" class="btn-outline">← Back to RNA Polymerases</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAT STRIP ── -->
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item"><span class="stat-value">&gt;99%</span><span class="stat-label">Enzyme purity</span></div>
+    <div class="stat-item"><span class="stat-value">AOF</span><span class="stat-label">Animal-origin free</span></div>
+    <div class="stat-item"><span class="stat-value">−20°C</span><span class="stat-label">Stable</span></div>
+    <div class="stat-item"><span class="stat-value">CoA</span><span class="stat-label">Certificate with every batch</span></div>
+  </div>
+</div>
+
+<!-- ── QUICK LINKS ── -->
+<section class="quick-links-section">
+  <div class="section-inner">
+    <div class="quick-links">
+      <a href="#protocol" class="quick-link-card">
+        <span class="qn-label">01</span>
+        <span class="qn-title">IVT Protocol</span>
+        <span class="qn-desc">Suggested IVT protocol for optimized ArtPure™ T7 activity.</span>
+      </a>
+      <a href="#quality" class="quick-link-card">
+        <span class="qn-label">02</span>
+        <span class="qn-title">Enzyme Quality</span>
+        <span class="qn-desc">ArtPure™ T7 is free of contaminants, ensuring high yield of pure RNA.</span>
+      </a>
+      <a href="#info" class="quick-link-card">
+        <span class="qn-label">03</span>
+        <span class="qn-title">Product Information</span>
+        <span class="qn-desc">Optimal storage conditions ensure prolonged enzyme function.</span>
+      </a>
+      <a href="#order" class="quick-link-card">
+        <span class="qn-label">04</span>
+        <span class="qn-title">Order</span>
+        <span class="qn-desc">Get in touch to get more information and a quote.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── IVT PROTOCOL ── -->
+<section class="protocol-section" id="protocol">
+  <div class="section-inner">
+    <span class="section-label">IVT Protocol</span>
+    <h2 class="section-title">Suggested <em>IVT protocol.</em></h2>
+    <p class="section-desc">Assemble the following reaction at room temperature. The volumes can be scaled according to the application.</p>
+    <div class="protocol-table-wrap">
+      <table class="protocol-table">
+        <tr><th>Component</th><th>Amount</th></tr>
+        <tr><td>Linearized DNA template</td><td>500 ng</td></tr>
+        <tr><td>Transcription buffer (10X)</td><td>1 µl</td></tr>
+        <tr><td>NTP</td><td>1 mM each</td></tr>
+        <tr><td>RNase inhibitor</td><td>1 unit</td></tr>
+        <tr><td>T7 RNA Polymerase</td><td>1 µl</td></tr>
+        <tr><td>Nuclease-free water</td><td>to 10 µl</td></tr>
+      </table>
+    </div>
+    <div class="protocol-steps">
+      <div class="protocol-step"><span class="step-num">1</span><span>Incubate the reaction 1 hour at 37°C.</span></div>
+      <div class="protocol-step"><span class="step-num">2</span><span>To remove the DNA template, add 1 U of DNase I and incubate at 37°C for 15 minutes.</span></div>
+      <div class="protocol-step"><span class="step-num">3</span><span>Inactivate the DNase I by adding 5 mM of EDTA, incubate at 70°C for 10 minutes.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENZYME QUALITY ── -->
+<section class="quality-section" id="quality">
+  <div class="section-inner">
+    <span class="section-label">Enzyme Quality</span>
+    <h2 class="section-title">Built for clean, reliable <em>in vitro</em> transcription.</h2>
+    <p class="section-desc">ArtPure™ T7 is free of contaminants, ensuring high yield of pure RNA. Every batch is evaluated across purity, activity and contaminant panels.</p>
+    <div class="quality-img-grid">
+      <div class="quality-img-card">
+        <h4>Purity</h4>
+        <img src="https://static.wixstatic.com/media/f7ef05_deef37bd4d5845118bd1a0c6b68d5c3e~mv2.png/v1/crop/x_0,y_131,w_1504,h_1303/fill/w_330,h_286,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/T7_gb_purity.png" alt="T7 RNA Polymerase glycerol-based purity chart" />
+      </div>
+      <div class="quality-img-card">
+        <h4>RNases</h4>
+        <img src="https://static.wixstatic.com/media/f7ef05_da842d2bfe244ce8a3f84c739b402a50~mv2.png/v1/fill/w_450,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/T7_gb_rnases.png" alt="T7 RNA Polymerase glycerol-based RNases chart" />
+      </div>
+      <div class="quality-img-card">
+        <h4>Activity</h4>
+        <img src="https://static.wixstatic.com/media/f7ef05_434270163bb74f4ab41ffb694b8b1814~mv2.png/v1/fill/w_460,h_266,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/T7_gb_activity.png" alt="T7 RNA Polymerase glycerol-based activity chart" />
+      </div>
+      <div class="quality-img-card">
+        <h4>Proteinases</h4>
+        <img src="https://static.wixstatic.com/media/f7ef05_4ff786cefa4842aea70b7daf6173d097~mv2.png/v1/fill/w_478,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/T7_gb_proteases.png" alt="T7 RNA Polymerase glycerol-based proteinases chart" />
+      </div>
+      <div class="quality-img-card">
+        <h4>DNases</h4>
+        <img src="https://static.wixstatic.com/media/f7ef05_df895b06ca694d439f7b34bef3f9a1e8~mv2.png/v1/fill/w_450,h_343,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/T7_gb_nucleases.png" alt="T7 RNA Polymerase glycerol-based DNases chart — single-stranded exonucleases, double-stranded endonucleases, double-stranded exonucleases at 0h, 4h, 16h" />
+      </div>
+    </div>
+
+    <div class="definitions-block">
+      <h3>Definitions</h3>
+      <div class="definition-item"><strong>Activity (U/µl):</strong> One enzyme unit incorporates 1 nmol of soluble RNA nucleotides into insoluble polymeric RNA per hour at 37°C.</div>
+      <div class="definition-item"><strong>Purity:</strong> Evaluated by SDS-PAGE, where the integrated peak area of the RNA Polymerase is compared to other protein peaks in the same lane.</div>
+      <div class="definition-item"><strong>Transcriptional activity:</strong> Quantification of total RNA products after <em>in vitro</em> transcription and RNA purification.</div>
+      <div class="definition-item"><strong>Proteinases:</strong> Assessed using Pierce™ Fluorescent Protease Assay Kit (ThermoFisher Scientific) following the manufacturer's guidelines.</div>
+      <div class="definition-item"><strong>RNases:</strong> Assessed using the RNase Alert kit (Integrated DNA Technologies), following the manufacturer's guidelines.</div>
+      <div class="definition-item"><strong>Double-stranded endonucleases:</strong> 2.5 µl of the T7 RNAP are incubated with 1 µg of supercoiled plasmid DNA for 0 hours, 4 hours at 37°C and 16 hours at room temperature.</div>
+      <div class="definition-item"><strong>Double-stranded exonucleases:</strong> 2.5 µl of the T7 RNAP are incubated with 0.5 µg of linearized double-stranded DNA substrate for 0 hours, 4 hours at 37°C and 16 hours at room temperature.</div>
+      <div class="definition-item"><strong>Single-stranded exonucleases:</strong> 2.5 µl of the T7 RNAP are incubated with 1 µg of ssDNA substrate (calf-thymus DNA) for 0 hours, 4 hours at 37°C and 16 hours at room temperature.</div>
+    </div>
+
+    <a class="coa-link" href="https://www.ternariabio.com/_files/ugd/f7ef05_522d00bed01c4c90be167d64a6ea1fec.pdf" target="_blank" rel="noopener">📄 Certificate of Analysis — COA_Z071_092024_v1</a>
+  </div>
+</section>
+
+<!-- ── PRODUCT INFORMATION ── -->
+<section class="info-section" id="info">
+  <div class="section-inner">
+    <span class="section-label">Product Information</span>
+    <h2 class="section-title">Storage &amp; <em>handling.</em></h2>
+    <p class="section-desc">Optimal storage conditions ensure prolonged enzyme function.</p>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>Storage upon receipt</h4>
+        <p>Our T7 RNA Polymerase is stable at −20°C for up to 12 months in the glycerol-based supplied buffer. For extended storage, we recommend aliquoting in smaller volumes, freezing at −80°C and avoiding repeated freeze-thaw cycles.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Storage buffer</h4>
+        <p>50 mM Tris-HCl, 100 mM NaCl, 20 mM DTT, 1 mM EDTA, 50% glycerol, 0.1% Triton X-100, pH 7.9.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Transcription buffer (10X)</h4>
+        <p>400 mM Tris-HCl, 60 mM MgCl₂, 100 mM DTT, 100 mM NaCl, 20 mM spermidine, pH 7.9.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ORDER ── -->
+<section class="order-section" id="order">
+  <div class="section-inner">
+    <span class="section-label">Order</span>
+    <h2 class="section-title">Pack sizes &amp; <em>pricing.</em></h2>
+    <p class="section-desc">Get in touch to get more information and a quote.</p>
+    <table class="order-table">
+      <tr><th>Product</th><th>SKU</th><th>Pack size</th><th></th></tr>
+      <tr>
+        <td>T7 RNA Polymerase (Glycerol-based)</td>
+        <td class="fmt-sku">Z0711</td>
+        <td>10,000 U</td>
+        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Polymerase%20(Glycerol-based%2C%20Z0711)%20-%20Website%20Inquiry">Contact us →</a></td>
+      </tr>
+      <tr>
+        <td>T7 RNA Polymerase (Glycerol-based)</td>
+        <td class="fmt-sku">Z0713</td>
+        <td>30,000 U</td>
+        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Polymerase%20(Glycerol-based%2C%20Z0713)%20-%20Website%20Inquiry">Contact us →</a></td>
+      </tr>
+      <tr>
+        <td>T7 RNA Polymerase (Glycerol-based)</td>
+        <td class="fmt-sku">Z071X</td>
+        <td>Custom</td>
+        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Polymerase%20(Glycerol-based%2C%20Z071X)%20-%20Website%20Inquiry">Contact us →</a></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Need a room-temperature format?</h2>
+    <p>Our lyophilized T7 RNA Polymerase ships without cold chain — same ArtPure™ purity, with simpler logistics.</p>
+    <div class="cta-actions">
+      <a href="t7-rna-polymerase-lyophilized.html" class="btn-white">See lyophilized format</a>
+      <a href="rna-polymerases.html" class="btn-outline-white">← Back to RNA Polymerases</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/2ff737_dc8a2bf025434a0793b0f50e2b94d98b~mv2.png" alt="Ternaria Biosciences" />
+      <p>Ternaria Biosciences develops next-generation RNA technologies from Iceland, powered by the ArtPure™ platform.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="artpure.html">ArtPure™ overview</a>
+      <a href="artpure.html#how-it-works">How it works</a>
+      <a href="artpure.html#performance">Performance data</a>
+      <a href="index.html#platform">Novel enzyme discovery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="rna-polymerases.html">RNA Polymerases</a>
+      <a href="kits.html">IVT &amp; Transcription Kits</a>
+      <a href="mrna.html">mRNA</a>
+      <a href="index.html#contact">Custom mRNA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About Ternaria</a>
+      <a href="index.html#team">Team</a>
+      <a href="events.html">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ternaria Biosciences ehf. All rights reserved.</span>
+    <span>Reykjavik, Iceland</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
