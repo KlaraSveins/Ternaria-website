@@ -28,7 +28,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
 
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -40,7 +39,6 @@
     .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
     .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
 
-    /* PAGE HERO */
     .page-hero {
       background: var(--navy);
       padding: 9rem 2rem 4.5rem;
@@ -70,48 +68,25 @@
     .page-hero h1 em { font-style: italic; color: var(--cyan); }
     .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7; }
 
-    /* CONTENT */
     section { padding: 5rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
 
-    .brochure-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+    .brochure-grid { display: grid; grid-template-columns: 1fr; max-width: 620px; gap: 2rem; margin-top: 3rem; }
 
     .brochure-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.25s, transform 0.25s;
-      position: relative;
+      background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s; position: relative;
     }
-    .brochure-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--cyan));
-    }
+    .brochure-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--teal), var(--cyan)); }
     .brochure-card:hover { box-shadow: 0 12px 40px rgba(33,58,93,0.13); transform: translateY(-4px); }
 
     .brochure-preview {
-      background: var(--ice);
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
+      background: var(--ice); height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border); overflow: hidden;
     }
-    .brochure-preview svg {
-      width: 64px; height: 64px;
-      opacity: 0.25;
-    }
+    .brochure-preview svg { width: 64px; height: 64px; opacity: 0.25; }
 
     .brochure-body { padding: 1.75rem 2rem 2rem; flex: 1; display: flex; flex-direction: column; }
     .brochure-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.6rem; }
@@ -119,29 +94,12 @@
     .brochure-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1.5rem; }
 
     .brochure-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .btn-download {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--navy); color: var(--white);
-      font-weight: 600; font-size: 0.88rem;
-      text-decoration: none; padding: 0.75rem 1.4rem;
-      border-radius: var(--radius);
-      transition: background 0.2s, transform 0.2s;
-    }
+    .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--navy); color: var(--white); font-weight: 600; font-size: 0.88rem; text-decoration: none; padding: 0.75rem 1.4rem; border-radius: var(--radius); transition: background 0.2s, transform 0.2s; }
     .btn-download:hover { background: var(--teal); transform: translateY(-1px); }
     .btn-download svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-
-    .btn-request {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: transparent; color: var(--teal-lt);
-      font-weight: 600; font-size: 0.88rem;
-      text-decoration: none; padding: 0.75rem 1.4rem;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .btn-request { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--teal-lt); font-weight: 600; font-size: 0.88rem; text-decoration: none; padding: 0.75rem 1.4rem; border: 1.5px solid var(--border); border-radius: var(--radius); transition: border-color 0.2s, color 0.2s; }
     .btn-request:hover { border-color: var(--teal-lt); color: var(--navy); }
 
-    /* CTA */
     .cta-section { background: var(--ice-lt); border-top: 1px solid var(--border); text-align: center; padding: 4rem 2rem; }
     .cta-inner { max-width: 580px; margin: 0 auto; }
     .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.75rem; display: block; }
@@ -150,12 +108,7 @@
     .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--cyan); color: var(--navy); font-weight: 700; font-size: 0.9rem; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: var(--radius); transition: transform 0.2s, background 0.2s; }
     .btn-primary:hover { background: #e88748; transform: translateY(-1px); }
 
-    /* FOOTER */
-    footer {
-      background: #060f1e;
-      padding: 2rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
+    footer { background: #060f1e; padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-logo img { height: 28px; filter: brightness(0) invert(1); opacity: 0.7; }
     footer .footer-links { display: flex; gap: 1.5rem; list-style: none; }
     footer .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
@@ -190,8 +143,8 @@
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Brochures</div>
     <div class="hero-badge">Downloads</div>
-    <h1>Our <em>brochures.</em></h1>
-    <p>Download our company brochure and product portfolio to learn more about Ternaria Biosciences and our ArtPure™ technology.</p>
+    <h1>Our <em>brochure</em></h1>
+    <p>Download our company brochure to learn more about Ternaria Biosciences and our ArtPure™ technology.</p>
   </div>
 </div>
 
@@ -199,7 +152,6 @@
   <div class="section-inner">
     <div class="brochure-grid">
 
-      <!-- Ternaria Brochure -->
       <div class="brochure-card">
         <div class="brochure-preview">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -215,34 +167,14 @@
           <h3>Ternaria Brochure</h3>
           <p>An overview of Ternaria Biosciences — our mission, ArtPure™ technology platform, and how we are enabling the next generation of RNA-based therapeutics from Iceland.</p>
           <div class="brochure-actions">
-            <a href="#" class="btn-download">
+            <a href="Ternaria%20Brochure%20TM-250420-1.v3.%20A3%20%2B%203mm%20bleeding%20-%20Outside%201%20(2).pdf" class="btn-download" target="_blank">
               <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download PDF
+              Download — Outside
             </a>
-            <a href="mailto:sales@ternariabio.com?subject=Ternaria%20Brochure%20Request" class="btn-request">Request by email</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portfolio -->
-      <div class="brochure-card">
-        <div class="brochure-preview">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-            <line x1="8" y1="21" x2="16" y2="21"/>
-            <line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-        </div>
-        <div class="brochure-body">
-          <span class="brochure-tag">Products</span>
-          <h3>Portfolio</h3>
-          <p>A complete overview of our product range — RNA polymerases, IVT kits, and mRNA products — with specifications, pack sizes, and SKU numbers for all available catalog items.</p>
-          <div class="brochure-actions">
-            <a href="#" class="btn-download">
+            <a href="Ternaria%20Brochure%20TM-250420-1.v3.%20A3%20%2B%203mm%20bleeding%20-%20Inside%202%20(2).pdf" class="btn-download" target="_blank" style="background:var(--teal);">
               <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download PDF
+              Download — Inside
             </a>
-            <a href="mailto:sales@ternariabio.com?subject=Portfolio%20Request" class="btn-request">Request by email</a>
           </div>
         </div>
       </div>
