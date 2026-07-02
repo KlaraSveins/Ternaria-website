@@ -28,6 +28,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
 
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -39,6 +40,7 @@
     .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; transition: color 0.2s, background 0.2s; }
     .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
 
+    /* PAGE HERO */
     .page-hero {
       background: var(--navy);
       padding: 9rem 2rem 4rem;
@@ -58,29 +60,106 @@
     .page-hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); margin-bottom: 0.75rem; }
     .page-hero p { font-size: 0.95rem; color: rgba(255,255,255,0.55); }
 
-    .content-wrap { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    /* CONTENT */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
 
-    .doc-tabs { display: flex; gap: 0.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--border); padding-bottom: 0; }
-    .doc-tab { font-size: 0.9rem; font-weight: 600; color: var(--muted); padding: 0.6rem 1.2rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; text-decoration: none; transition: color 0.2s, border-color 0.2s; }
+    /* Section tabs */
+    .doc-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0;
+    }
+    .doc-tab {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
     .doc-tab.active { color: var(--navy); border-color: var(--teal); }
     .doc-tab:hover { color: var(--navy); }
 
     .doc-section { display: none; }
     .doc-section.active { display: block; }
 
-    .policy-meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 2.5rem; padding: 0.75rem 1rem; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 8px; }
+    /* Policy content styles */
+    .policy-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--ice-lt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
 
     .policy-block { margin-bottom: 2.5rem; }
-    .policy-block h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-    .policy-block p { font-size: 0.95rem; color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
-    .policy-block ul { list-style: none; margin: 0.5rem 0 0.75rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
-    .policy-block ul li { font-size: 0.92rem; color: var(--text); line-height: 1.65; padding-left: 1.2rem; position: relative; }
-    .policy-block ul li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%; background: var(--teal-lt); }
+    .policy-block h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .policy-block p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+    .policy-block ul {
+      list-style: none;
+      margin: 0.5rem 0 0.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .policy-block ul li {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .policy-block ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.65em;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal-lt);
+    }
     .policy-block a { color: var(--teal-lt); text-decoration: none; }
     .policy-block a:hover { color: var(--cyan); }
-    .sub-heading { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin: 1.25rem 0 0.4rem; }
 
-    footer { background: #060f1e; padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .sub-heading {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.25rem 0 0.4rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #060f1e;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
     .footer-logo img { height: 28px; filter: brightness(0) invert(1); opacity: 0.7; }
     footer .footer-links { display: flex; gap: 1.5rem; list-style: none; }
     footer .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
@@ -119,13 +198,16 @@
 </div>
 
 <div class="content-wrap">
+
   <div class="doc-tabs">
     <a class="doc-tab active" href="#privacy" onclick="showTab('privacy', event)">Privacy Policy</a>
     <a class="doc-tab" href="#cookies" onclick="showTab('cookies', event)">Cookie Policy</a>
   </div>
 
+  <!-- PRIVACY POLICY -->
   <div class="doc-section active" id="privacy">
     <div class="policy-meta">Last updated: January 7th, 2026</div>
+
     <p style="font-size:0.95rem; color:var(--text); line-height:1.75; margin-bottom:2rem;">Ternaria Bio ("we", "us", "our") operates the website ternariabio.com using the Wix.com platform. We are committed to protecting your privacy and processing personal data in accordance with applicable data protection laws, including the EU General Data Protection Regulation (GDPR).</p>
 
     <div class="policy-block">
@@ -133,10 +215,12 @@
       <p>The data controller responsible for the processing of personal data is:</p>
       <p><strong>Ternaria Bio</strong><br />Website: ternariabio.com<br />Email: <a href="mailto:ternariabio@ternariabio.com">ternariabio@ternariabio.com</a></p>
     </div>
+
     <div class="policy-block">
       <h2>2. Website Platform and Hosting</h2>
       <p>Our Website is hosted on Wix.com Ltd. Wix provides us with the online platform that allows us to present our services and information. Personal data may be stored through Wix's data storage, databases, and general Wix applications. Wix stores data on secure servers behind a firewall.</p>
     </div>
+
     <div class="policy-block">
       <h2>3. Personal Data We Collect</h2>
       <p>We may collect the following personal data:</p>
@@ -146,6 +230,7 @@
         <li>Technical data such as IP address, browser type, device information, and operating system</li>
       </ul>
     </div>
+
     <div class="policy-block">
       <h2>4. Purpose of Processing</h2>
       <p>We process personal data to:</p>
@@ -156,6 +241,7 @@
         <li>Comply with legal obligations</li>
       </ul>
     </div>
+
     <div class="policy-block">
       <h2>5. Legal Basis for Processing</h2>
       <p>Personal data is processed based on:</p>
@@ -165,15 +251,18 @@
         <li>Compliance with legal obligations</li>
       </ul>
     </div>
+
     <div class="policy-block">
       <h2>6. Data Sharing and International Transfers</h2>
       <p>Personal data may be processed by Wix and its service providers, some of which may be located outside the European Economic Area. In such cases, Wix ensures appropriate safeguards are in place, such as standard contractual clauses approved by the European Commission.</p>
       <p>We do not sell or rent personal data.</p>
     </div>
+
     <div class="policy-block">
       <h2>7. Data Retention</h2>
       <p>Personal data is retained only for as long as necessary to fulfill the purposes outlined in this Policy, unless a longer retention period is required by law.</p>
     </div>
+
     <div class="policy-block">
       <h2>8. Your Rights</h2>
       <p>Under GDPR, you have the right to:</p>
@@ -186,20 +275,24 @@
       </ul>
       <p style="margin-top:0.75rem;">To exercise your rights, please contact us at <a href="mailto:ternariabio@ternariabio.com">ternariabio@ternariabio.com</a>.</p>
     </div>
+
     <div class="policy-block">
       <h2>9. Changes to This Policy</h2>
       <p>We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised "Last updated" date.</p>
     </div>
   </div>
 
+  <!-- COOKIE POLICY -->
   <div class="doc-section" id="cookies">
     <div class="policy-meta">Last updated: January 7th, 2026</div>
+
     <p style="font-size:0.95rem; color:var(--text); line-height:1.75; margin-bottom:2rem;">This Cookie Policy explains how ternariabio.com, built on the Wix platform, uses cookies and similar technologies.</p>
 
     <div class="policy-block">
       <h2>1. What Are Cookies?</h2>
       <p>Cookies are small text files placed on your device when you visit a website. They help websites function properly, improve user experience, and provide analytical information.</p>
     </div>
+
     <div class="policy-block">
       <h2>2. Cookies Used by Wix</h2>
       <p>Wix uses cookies for important reasons, such as:</p>
@@ -211,6 +304,7 @@
       </ul>
       <p style="margin-top:0.75rem;">Some cookies are essential and are set automatically when you visit the Website.</p>
     </div>
+
     <div class="policy-block">
       <h2>3. Types of Cookies We Use</h2>
       <p class="sub-heading">Essential Cookies</p>
@@ -220,19 +314,23 @@
       <p class="sub-heading">Functional Cookies</p>
       <p>Enable enhanced functionality and personalization.</p>
     </div>
+
     <div class="policy-block">
       <h2>4. Managing Cookies</h2>
       <p>You can manage or disable cookies through your browser settings. Please note that disabling cookies may affect the functionality of the Website.</p>
     </div>
+
     <div class="policy-block">
       <h2>5. Third-Party Cookies</h2>
       <p>The Website may include third-party services provided through Wix (such as analytics tools), which may place cookies on your device. These third parties process data according to their own privacy policies.</p>
     </div>
+
     <div class="policy-block">
       <h2>6. Changes to This Policy</h2>
       <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
     </div>
   </div>
+
 </div>
 
 <footer>
