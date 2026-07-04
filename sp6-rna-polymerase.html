@@ -202,10 +202,30 @@
     .protocol-step .step-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--teal-lt); color: #fff; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 
     /* ── QUALITY ── */
-    .quality-img-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-    .quality-img-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; text-align: center; }
-    .quality-img-card img { width: 100%; height: 260px; object-fit: contain; border-radius: 8px; margin-top: 0.75rem; background: var(--ice-lt); }
-    .quality-img-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; }
+    .perf-comparison-card {
+      margin-top: 2.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(33,58,93,0.06);
+    }
+    .perf-comparison-card img {
+      width: 100%;
+      max-width: 960px;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+    .perf-note {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
 
     .definitions-block { margin-top: 3rem; background: var(--ice-lt); border: 1px solid var(--border); border-radius: 14px; padding: 2rem 2.25rem; }
     .definitions-block h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 1.25rem; font-weight: 400; }
@@ -389,31 +409,9 @@
     <span class="section-label">Enzyme Quality</span>
     <h2 class="section-title">Superior yield, integrity and <em>purity.</em></h2>
     <p class="section-desc">ArtPure™ SP6 RNA Polymerase outperforms industry standards across yield, RNA integrity and dsRNA by-products — verified by head-to-head comparison.</p>
-    <div class="quality-img-grid">
-      <div class="quality-img-card">
-        <h4>Purity</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_63738af5f01544ea9db032e4718be15b~mv2.png/v1/fill/w_349,h_305,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SP6_gb_purity.png" alt="SP6 RNA Polymerase purity chart" />
-      </div>
-      <div class="quality-img-card">
-        <h4>RNases</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_0c6e0490a6364bf4bc349e3d003a965a~mv2.png/v1/fill/w_471,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SP6_gb_rnases.png" alt="SP6 RNA Polymerase RNases chart" />
-      </div>
-      <div class="quality-img-card">
-        <h4>Activity</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_58559520847f4347a80129cbc5b92168~mv2.png/v1/fill/w_476,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SP6_gb_activity.png" alt="SP6 RNA Polymerase activity chart" />
-      </div>
-      <div class="quality-img-card">
-        <h4>Proteinases</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_e4510f1b753a4c4ea09b983ca07d8c9b~mv2.png/v1/fill/w_471,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SP6_gb_proteases.png" alt="SP6 RNA Polymerase proteinases chart" />
-      </div>
-      <div class="quality-img-card">
-        <h4>DNases</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_505f950208fa4771acd34ec5e59c5bf2~mv2.jpg/v1/crop/x_0,y_7,w_633,h_438/fill/w_478,h_331,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/SP6_gb_nucleases_edited.jpg" alt="SP6 RNA Polymerase DNases chart — single-stranded exonucleases, double-stranded endonucleases, double-stranded exonucleases at 0h, 4h, 16h" />
-      </div>
-      <div class="quality-img-card">
-        <h4>Protein expression</h4>
-        <img src="https://static.wixstatic.com/media/f7ef05_c0e1b5152605411b813f687333729367~mv2.jpg/v1/fill/w_478,h_257,al_c,lg_1,q_80,enc_avif,quality_auto/zebrafish_bright.jpg" alt="eGFP protein expression in zebrafish following SP6 RNAP in vitro transcription" />
-      </div>
+    <div class="perf-comparison-card">
+      <img src="fig_sp6_performance.png" alt="SP6 RNA Polymerase performance comparison: superior RNA yield, high RNA integrity, low dsRNA by-products versus Supplier A" />
+      <p class="perf-note">Head-to-head comparison of ArtPure™ SP6 RNA Polymerase versus industry supplier under identical reaction conditions.</p>
     </div>
 
     <div class="definitions-block">
