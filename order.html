@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order | Ternaria Biosciences</title>
+  <meta name="description" content="Order RNA polymerases, transcription kits, and NorthScribe mRNA kits directly from Ternaria Biosciences. All prices in EUR, excl. VAT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cart.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #213a5d;
+      --teal:    #287890;
+      --teal-lt: #3b93ac;
+      --cyan:    #e8701f;
+      --ice:     #eef8fc;
+      --ice-lt:  #f7fbfd;
+      --white:   #ffffff;
+      --text:    #1a2e3d;
+      --muted:   #6b8694;
+      --border:  #dcedf5;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; font-size: 16px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+      background: rgba(33,58,93,0.97); backdrop-filter: blur(12px);
+    }
+    .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links .active { color: var(--cyan) !important; }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: var(--navy); padding: 9rem 2rem 4rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(40,120,144,0.25) 0%, transparent 70%);
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem,4vw,3rem); color: var(--white); margin-bottom: 1rem; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+
+    /* ── LAYOUT ── */
+    .order-page { max-width: 960px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    /* ── CATEGORY ── */
+    .order-category { margin-bottom: 3.5rem; }
+    .order-category-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      border-bottom: 2px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .order-category-header h2 { font-size: 1.25rem; color: var(--navy); }
+    .order-category-header a { font-size: 0.82rem; color: var(--teal); text-decoration: none; }
+    .order-category-header a:hover { text-decoration: underline; }
+
+    /* ── TABLE ── */
+    table.order-tbl { width: 100%; border-collapse: collapse; }
+    table.order-tbl th {
+      text-align: left; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); padding: 0 0.75rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    table.order-tbl td { padding: 0.8rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: middle; font-size: 0.92rem; }
+    table.order-tbl tr:last-child td { border-bottom: none; }
+    table.order-tbl tr:hover td { background: var(--ice-lt); }
+    .col-sku { color: var(--muted); font-size: 0.82rem; font-family: monospace; white-space: nowrap; }
+    .col-price { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .col-vat { font-size: 0.75rem; color: var(--muted); display: block; font-weight: 400; }
+    .col-actions { white-space: nowrap; }
+    .btn-buy {
+      display: inline-block; padding: 0.4rem 1rem; background: var(--teal);
+      color: var(--white); font-size: 0.82rem; font-weight: 600; border-radius: 6px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-buy:hover { background: var(--teal-lt); }
+    .btn-quote {
+      margin-left: 0.6rem; font-size: 0.8rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .btn-quote:hover { color: var(--teal); }
+    .col-custom { color: var(--muted); font-style: italic; font-size: 0.85rem; }
+
+    /* ── SPECIAL ORDERS ── */
+    .special-box {
+      background: var(--ice); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 2.5rem; margin-top: 1rem; display: grid;
+      grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+    }
+    .special-box h2 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .special-box p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+    .special-box ul { margin: 0.75rem 0 0 1.2rem; color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+    .btn-contact {
+      display: inline-block; padding: 0.75rem 1.75rem; background: var(--navy);
+      color: var(--white); font-size: 0.9rem; font-weight: 600; border-radius: 8px;
+      text-decoration: none; transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-contact:hover { background: var(--teal); }
+
+    .vat-note { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+
+    @media (max-width: 700px) {
+      .special-box { grid-template-columns: 1fr; }
+      table.order-tbl th:nth-child(2), table.order-tbl td:nth-child(2) { display: none; }
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 4rem 2rem 2rem; }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.6; }
+    .footer-col h4 { color: var(--white); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { max-width: 960px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+    @media (max-width: 800px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#mission">Company</a></li>
+    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="rna-polymerases.html">Products</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="order.html" class="nav-cta active">Order</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Order</h1>
+    <p>All products ship from Reykjavik, Iceland. Prices in EUR, excl. VAT.<br>Need something custom? <a href="mailto:sales@ternariabio.com" style="color:rgba(255,255,255,0.8);">Contact sales →</a></p>
+  </div>
+</section>
+
+<div class="order-page">
+
+  <!-- ── RNA POLYMERASES ── -->
+  <div class="order-category">
+    <div class="order-category-header">
+      <h2>RNA Polymerases</h2>
+      <a href="rna-polymerases.html">View all polymerases →</a>
+    </div>
+    <table class="order-tbl">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>SKU</th>
+          <th>Pack size</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
+          <td class="col-sku">Z0711</td>
+          <td>5,000 U</td>
+          <td class="col-price">€76 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f4d-9918-7e09-8d70-d42e39b7f8ab" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
+          <td class="col-sku">Z0713</td>
+          <td>15,000 U</td>
+          <td class="col-price">€229 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f51-2ada-7f39-bef5-caf99f38f73e" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Lyophilized)</span></td>
+          <td class="col-sku">Z0721</td>
+          <td>5,000 U</td>
+          <td class="col-price">€76 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f53-ffbc-7fa6-8feb-98e561602c9b" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Lyophilized)</span></td>
+          <td class="col-sku">Z0723</td>
+          <td>15,000 U</td>
+          <td class="col-price">€229 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f56-cf79-7217-a9ed-91df82a9368f" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
+          <td class="col-sku">Z0611</td>
+          <td>3,000 U</td>
+          <td class="col-price">€330 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f58-1429-7fcb-8240-838ba2dd11c8" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
+          <td class="col-sku">Z0613</td>
+          <td>10,000 U</td>
+          <td class="col-price">€1,100 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions">
+            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f59-6678-75e8-bffd-01d807e6c386" target="_blank" rel="noopener">Buy now</a>
+          </td>
+        </tr>
+        <tr>
+          <td>T7 or SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Custom volume)</span></td>
+          <td class="col-sku">Z061X / Z071X / Z072X</td>
+          <td>Custom</td>
+          <td class="col-custom">On request</td>
+          <td class="col-actions">
+            <a class="btn-quote" href="mailto:sales@ternariabio.com?subject=RNA%20Polymerase%20-%20Custom%20Volume%20Inquiry">Get a quote →</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── T7 RNA SYNTHESIS KIT ── -->
+  <div class="order-category">
+    <div class="order-category-header">
+      <h2>T7 RNA Synthesis Kit</h2>
+      <a href="t7-rna-synthesis-kit.html">Product details →</a>
+    </div>
+    <table class="order-tbl">
+      <thead>
+        <tr><th>Product</th><th>SKU</th><th>Pack size</th><th>Price</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T7 RNA Synthesis Kit</td>
+          <td class="col-sku">KS07025</td>
+          <td>25 reactions</td>
+          <td class="col-price">€200 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5a-ddab-7fc9-a9c8-0a1ea9b00093" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>T7 RNA Synthesis Kit</td>
+          <td class="col-sku">KS07050</td>
+          <td>50 reactions</td>
+          <td class="col-price">€400 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5c-348a-79ef-af80-7331d842905d" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>T7 RNA Synthesis Kit</td>
+          <td class="col-sku">KS070200</td>
+          <td>200 reactions</td>
+          <td class="col-price">€1,300 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5d-c05a-778b-810b-d2f2b9e33325" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── ZEBRASCRIBE KITS ── -->
+  <div class="order-category">
+    <div class="order-category-header">
+      <h2>ZebraScribe™ Transcription Kits</h2>
+      <a href="kits.html#group-zebrascribe">Product details →</a>
+    </div>
+    <table class="order-tbl">
+      <thead>
+        <tr><th>Product</th><th>SKU</th><th>Pack size</th><th>Price</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ZebraScribe™ T7 Transcription Kit</td>
+          <td class="col-sku">ZKT07025</td>
+          <td>25 reactions</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5f-51d9-7299-8b4a-a7fce0dbe330" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>ZebraScribe™ T7 Transcription Kit</td>
+          <td class="col-sku">ZKT07050</td>
+          <td>50 reactions</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f60-f609-7b76-b4ec-e7f5a19de7bc" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>ZebraScribe™ SP6 Transcription Kit</td>
+          <td class="col-sku">ZKT06025</td>
+          <td>25 reactions</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f62-4acc-770a-9628-3620192708af" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>ZebraScribe™ SP6 Transcription Kit</td>
+          <td class="col-sku">ZKT06050</td>
+          <td>50 reactions</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f64-077c-7a17-b89b-0d62b87a15d1" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── NORTHSCRIBE KITS ── -->
+  <div class="order-category">
+    <div class="order-category-header">
+      <h2>NorthScribe™ Transcription Kits</h2>
+      <a href="kits.html#group-northscribe">Product details →</a>
+    </div>
+    <table class="order-tbl">
+      <thead>
+        <tr><th>Product</th><th>SKU</th><th>Pack size</th><th>Price</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT07025</td>
+          <td>25 rxn · T7</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f65-894c-7486-b758-61389ece22bf" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT07050</td>
+          <td>50 rxn · T7</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f66-f14d-7bec-9096-af8692acee96" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT06025</td>
+          <td>25 rxn · SP6</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f68-5ad6-7b3d-9a55-4fbd5aa7f125" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT06050</td>
+          <td>50 rxn · SP6</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f69-fb5a-78e9-9319-3735afd01cf7" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT17025</td>
+          <td>25 rxn · T7</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f82-cfe0-7bb1-9d33-243a302b8e8e" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT17050</td>
+          <td>50 rxn · T7</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f83-871a-71e8-8ecb-7ac500f9caa4" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT16025</td>
+          <td>25 rxn · SP6</td>
+          <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f84-3ffb-7f2a-8f8c-2e33d09081b6" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
+          <td class="col-sku">AKT16050</td>
+          <td>50 rxn · SP6</td>
+          <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f84-ff5e-72ea-8039-fc21820bba7e" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
+          <td class="col-sku">CKT07010</td>
+          <td>10 rxn · T7</td>
+          <td class="col-price">€260 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f86-214c-74ca-b6aa-5594d9dda41e" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
+          <td class="col-sku">CKT07025</td>
+          <td>25 rxn · T7</td>
+          <td class="col-price">€650 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f86-b3a3-7e52-8669-9cd5fd32c554" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
+          <td class="col-sku">CKT17010</td>
+          <td>10 rxn · T7</td>
+          <td class="col-price">€260 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f87-685f-72dd-afa2-f3b0b0301b47" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+        <tr>
+          <td>NorthScribe™ m¹Ψ-Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
+          <td class="col-sku">CKT17025</td>
+          <td>25 rxn · T7</td>
+          <td class="col-price">€650 <span class="col-vat">excl. VAT</span></td>
+          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f88-08d1-78e6-ae22-e0d2501a14bb" target="_blank" rel="noopener">Buy now</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="vat-note">All NorthScribe kits include T7 or SP6 RNA Polymerase, cap analog, NTP mix, reaction buffer, and control template.</p>
+  </div>
+
+  <!-- ── SPECIAL ORDERS ── -->
+  <div class="special-box">
+    <div>
+      <h2>Need something different?</h2>
+      <p>We handle bulk orders, institutional procurement, and custom formats — including modified nucleotides, alternative cap analogs, and large-scale synthesis runs.</p>
+      <ul>
+        <li>Bulk &amp; volume pricing</li>
+        <li>Custom pack sizes</li>
+        <li>Modified nucleotide variants</li>
+        <li>Institutional &amp; distributor accounts</li>
+        <li>Custom mRNA synthesis services</li>
+      </ul>
+    </div>
+    <a class="btn-contact" href="mailto:sales@ternariabio.com?subject=Special%20Order%20Inquiry%20-%20Ternaria%20Biosciences">Contact sales →</a>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/9105b7_90d73c3b3d5e408b83ab300a757d397d~mv2.png/v1/crop/x_0,y_3079,w_30000,h_8843/fill/w_392,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Ternaria%20(Transparent%20background).png" alt="Ternaria Biosciences" />
+      <p>Ternaria Biosciences develops next-generation RNA technologies from Iceland, powered by the ArtPure™ platform.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="artpure.html">ArtPure™ overview</a>
+      <a href="artpure.html#how-it-works">How it works</a>
+      <a href="artpure.html#performance">Performance data</a>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="rna-polymerases.html">RNA Polymerases</a>
+      <a href="kits.html">IVT &amp; Transcription Kits</a>
+      <a href="mrna.html">mRNA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About Ternaria</a>
+      <a href="index.html#team">Team</a>
+      <a href="events.html">Events</a>
+      <a href="mailto:sales@ternariabio.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ternaria Biosciences ehf. All rights reserved.</span>
+    <span>Reykjavik, Iceland</span>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+</body>
+</html>
