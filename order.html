@@ -89,7 +89,8 @@
     .btn-buy {
       display: inline-block; padding: 0.4rem 1rem; background: var(--teal);
       color: var(--white); font-size: 0.82rem; font-weight: 600; border-radius: 6px;
-      text-decoration: none; transition: background 0.2s;
+      text-decoration: none; border: none; cursor: pointer; transition: background 0.2s;
+      font-family: inherit;
     }
     .btn-buy:hover { background: var(--teal-lt); }
     .btn-quote {
@@ -114,11 +115,92 @@
       text-decoration: none; transition: background 0.2s; white-space: nowrap;
     }
     .btn-contact:hover { background: var(--teal); }
-
     .vat-note { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+
+    /* ── ORDER MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(15,30,50,0.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white); border-radius: 16px; width: 100%; max-width: 520px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      animation: modal-in 0.22s ease;
+    }
+    @keyframes modal-in { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: none; } }
+
+    .modal-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 1.75rem 1.75rem 0;
+    }
+    .modal-header h3 { font-size: 1.1rem; color: var(--navy); }
+    .modal-product-badge {
+      margin-top: 0.3rem; font-size: 0.8rem; color: var(--muted);
+    }
+    .modal-close {
+      background: none; border: none; cursor: pointer; color: var(--muted);
+      font-size: 1.4rem; line-height: 1; padding: 0.2rem; transition: color 0.15s;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body { padding: 1.25rem 1.75rem 1.75rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .form-group { margin-bottom: 0.75rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 600; color: var(--navy);
+      margin-bottom: 0.3rem; letter-spacing: 0.02em;
+    }
+    .form-group label .opt { font-weight: 400; color: var(--muted); }
+    .form-group input, .form-group select {
+      width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.9rem; font-family: inherit; color: var(--text);
+      background: var(--white); transition: border-color 0.15s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--teal); }
+    .form-group input::placeholder { color: var(--muted); }
+
+    .modal-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+
+    .modal-summary {
+      background: var(--ice); border-radius: 8px; padding: 0.75rem 1rem;
+      font-size: 0.85rem; margin-bottom: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-summary-label { color: var(--muted); }
+    .modal-summary-price { font-weight: 700; color: var(--navy); font-size: 1rem; }
+
+    .btn-continue {
+      width: 100%; padding: 0.85rem; background: var(--teal); color: var(--white);
+      font-size: 0.95rem; font-weight: 700; border: none; border-radius: 10px;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .btn-continue:hover { background: var(--teal-lt); }
+    .btn-continue:disabled { background: var(--muted); cursor: not-allowed; }
+    .btn-continue .spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    .btn-continue.loading .spinner { display: block; }
+    .btn-continue.loading .btn-text { opacity: 0.7; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .modal-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.75rem; }
+
+    /* ── SUCCESS STATE ── */
+    .modal-success { display: none; text-align: center; padding: 2rem 1.75rem 2.5rem; }
+    .modal-success.show { display: block; }
+    .modal-success .check { font-size: 2.5rem; margin-bottom: 1rem; }
+    .modal-success h3 { color: var(--navy); margin-bottom: 0.5rem; }
+    .modal-success p { color: var(--muted); font-size: 0.9rem; }
 
     @media (max-width: 700px) {
       .special-box { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
       table.order-tbl th:nth-child(2), table.order-tbl td:nth-child(2) { display: none; }
     }
 
@@ -169,77 +251,50 @@
     </div>
     <table class="order-tbl">
       <thead>
-        <tr>
-          <th>Product</th>
-          <th>SKU</th>
-          <th>Pack size</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
+        <tr><th>Product</th><th>SKU</th><th>Pack size</th><th>Price</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
           <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
-          <td class="col-sku">Z0711</td>
-          <td>5,000 U</td>
+          <td class="col-sku">Z0711</td><td>5,000 U</td>
           <td class="col-price">€76 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f4d-9918-7e09-8d70-d42e39b7f8ab" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Polymerase (Glycerol-based)','Z0711','5,000 U','€76','https://checkout.teya.com/pbl/019f8f4d-9918-7e09-8d70-d42e39b7f8ab')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
-          <td class="col-sku">Z0713</td>
-          <td>15,000 U</td>
+          <td class="col-sku">Z0713</td><td>15,000 U</td>
           <td class="col-price">€229 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f51-2ada-7f39-bef5-caf99f38f73e" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Polymerase (Glycerol-based)','Z0713','15,000 U','€229','https://checkout.teya.com/pbl/019f8f51-2ada-7f39-bef5-caf99f38f73e')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Lyophilized)</span></td>
-          <td class="col-sku">Z0721</td>
-          <td>5,000 U</td>
+          <td class="col-sku">Z0721</td><td>5,000 U</td>
           <td class="col-price">€76 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f53-ffbc-7fa6-8feb-98e561602c9b" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Polymerase (Lyophilized)','Z0721','5,000 U','€76','https://checkout.teya.com/pbl/019f8f53-ffbc-7fa6-8feb-98e561602c9b')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Lyophilized)</span></td>
-          <td class="col-sku">Z0723</td>
-          <td>15,000 U</td>
+          <td class="col-sku">Z0723</td><td>15,000 U</td>
           <td class="col-price">€229 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f56-cf79-7217-a9ed-91df82a9368f" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Polymerase (Lyophilized)','Z0723','15,000 U','€229','https://checkout.teya.com/pbl/019f8f56-cf79-7217-a9ed-91df82a9368f')">Buy now</button></td>
         </tr>
         <tr>
           <td>SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
-          <td class="col-sku">Z0611</td>
-          <td>3,000 U</td>
+          <td class="col-sku">Z0611</td><td>3,000 U</td>
           <td class="col-price">€330 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f58-1429-7fcb-8240-838ba2dd11c8" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('SP6 RNA Polymerase (Glycerol-based)','Z0611','3,000 U','€330','https://checkout.teya.com/pbl/019f8f58-1429-7fcb-8240-838ba2dd11c8')">Buy now</button></td>
         </tr>
         <tr>
           <td>SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Glycerol-based)</span></td>
-          <td class="col-sku">Z0613</td>
-          <td>10,000 U</td>
+          <td class="col-sku">Z0613</td><td>10,000 U</td>
           <td class="col-price">€1,100 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions">
-            <a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f59-6678-75e8-bffd-01d807e6c386" target="_blank" rel="noopener">Buy now</a>
-          </td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('SP6 RNA Polymerase (Glycerol-based)','Z0613','10,000 U','€1,100','https://checkout.teya.com/pbl/019f8f59-6678-75e8-bffd-01d807e6c386')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 or SP6 RNA Polymerase <span style="color:var(--muted);font-size:0.82rem;">(Custom volume)</span></td>
-          <td class="col-sku">Z061X / Z071X / Z072X</td>
-          <td>Custom</td>
+          <td class="col-sku">Z061X / Z071X / Z072X</td><td>Custom</td>
           <td class="col-custom">On request</td>
-          <td class="col-actions">
-            <a class="btn-quote" href="mailto:sales@ternariabio.com?subject=RNA%20Polymerase%20-%20Custom%20Volume%20Inquiry">Get a quote →</a>
-          </td>
+          <td class="col-actions"><a class="btn-quote" href="mailto:sales@ternariabio.com?subject=RNA%20Polymerase%20-%20Custom%20Volume%20Inquiry">Get a quote →</a></td>
         </tr>
       </tbody>
     </table>
@@ -258,24 +313,21 @@
       <tbody>
         <tr>
           <td>T7 RNA Synthesis Kit</td>
-          <td class="col-sku">KS07025</td>
-          <td>25 reactions</td>
+          <td class="col-sku">KS07025</td><td>25 reactions</td>
           <td class="col-price">€200 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5a-ddab-7fc9-a9c8-0a1ea9b00093" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Synthesis Kit','KS07025','25 reactions','€200','https://checkout.teya.com/pbl/019f8f5a-ddab-7fc9-a9c8-0a1ea9b00093')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 RNA Synthesis Kit</td>
-          <td class="col-sku">KS07050</td>
-          <td>50 reactions</td>
+          <td class="col-sku">KS07050</td><td>50 reactions</td>
           <td class="col-price">€400 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5c-348a-79ef-af80-7331d842905d" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Synthesis Kit','KS07050','50 reactions','€400','https://checkout.teya.com/pbl/019f8f5c-348a-79ef-af80-7331d842905d')">Buy now</button></td>
         </tr>
         <tr>
           <td>T7 RNA Synthesis Kit</td>
-          <td class="col-sku">KS070200</td>
-          <td>200 reactions</td>
+          <td class="col-sku">KS070200</td><td>200 reactions</td>
           <td class="col-price">€1,300 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5d-c05a-778b-810b-d2f2b9e33325" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('T7 RNA Synthesis Kit','KS070200','200 reactions','€1,300','https://checkout.teya.com/pbl/019f8f5d-c05a-778b-810b-d2f2b9e33325')">Buy now</button></td>
         </tr>
       </tbody>
     </table>
@@ -285,7 +337,7 @@
   <div class="order-category">
     <div class="order-category-header">
       <h2>ZebraScribe™ Transcription Kits</h2>
-      <a href="kits.html#group-zebrascribe">Product details →</a>
+      <a href="kits.html">Product details →</a>
     </div>
     <table class="order-tbl">
       <thead>
@@ -294,31 +346,27 @@
       <tbody>
         <tr>
           <td>ZebraScribe™ T7 Transcription Kit</td>
-          <td class="col-sku">ZKT07025</td>
-          <td>25 reactions</td>
+          <td class="col-sku">ZKT07025</td><td>25 reactions</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f5f-51d9-7299-8b4a-a7fce0dbe330" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('ZebraScribe™ T7 Transcription Kit','ZKT07025','25 reactions','€625','https://checkout.teya.com/pbl/019f8f5f-51d9-7299-8b4a-a7fce0dbe330')">Buy now</button></td>
         </tr>
         <tr>
           <td>ZebraScribe™ T7 Transcription Kit</td>
-          <td class="col-sku">ZKT07050</td>
-          <td>50 reactions</td>
+          <td class="col-sku">ZKT07050</td><td>50 reactions</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f60-f609-7b76-b4ec-e7f5a19de7bc" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('ZebraScribe™ T7 Transcription Kit','ZKT07050','50 reactions','€1,250','https://checkout.teya.com/pbl/019f8f60-f609-7b76-b4ec-e7f5a19de7bc')">Buy now</button></td>
         </tr>
         <tr>
           <td>ZebraScribe™ SP6 Transcription Kit</td>
-          <td class="col-sku">ZKT06025</td>
-          <td>25 reactions</td>
+          <td class="col-sku">ZKT06025</td><td>25 reactions</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f62-4acc-770a-9628-3620192708af" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('ZebraScribe™ SP6 Transcription Kit','ZKT06025','25 reactions','€625','https://checkout.teya.com/pbl/019f8f62-4acc-770a-9628-3620192708af')">Buy now</button></td>
         </tr>
         <tr>
           <td>ZebraScribe™ SP6 Transcription Kit</td>
-          <td class="col-sku">ZKT06050</td>
-          <td>50 reactions</td>
+          <td class="col-sku">ZKT06050</td><td>50 reactions</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f64-077c-7a17-b89b-0d62b87a15d1" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('ZebraScribe™ SP6 Transcription Kit','ZKT06050','50 reactions','€1,250','https://checkout.teya.com/pbl/019f8f64-077c-7a17-b89b-0d62b87a15d1')">Buy now</button></td>
         </tr>
       </tbody>
     </table>
@@ -328,7 +376,7 @@
   <div class="order-category">
     <div class="order-category-header">
       <h2>NorthScribe™ Transcription Kits</h2>
-      <a href="kits.html#group-northscribe">Product details →</a>
+      <a href="kits.html">Product details →</a>
     </div>
     <table class="order-tbl">
       <thead>
@@ -337,87 +385,75 @@
       <tbody>
         <tr>
           <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT07025</td>
-          <td>25 rxn · T7</td>
+          <td class="col-sku">AKT07025</td><td>25 rxn · T7</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f65-894c-7486-b758-61389ece22bf" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ ARCA (Cap-0)','AKT07025','25 rxn · T7','€625','https://checkout.teya.com/pbl/019f8f65-894c-7486-b758-61389ece22bf')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT07050</td>
-          <td>50 rxn · T7</td>
+          <td class="col-sku">AKT07050</td><td>50 rxn · T7</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f66-f14d-7bec-9096-af8692acee96" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ ARCA (Cap-0)','AKT07050','50 rxn · T7','€1,250','https://checkout.teya.com/pbl/019f8f66-f14d-7bec-9096-af8692acee96')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT06025</td>
-          <td>25 rxn · SP6</td>
+          <td class="col-sku">AKT06025</td><td>25 rxn · SP6</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f68-5ad6-7b3d-9a55-4fbd5aa7f125" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ ARCA (Cap-0)','AKT06025','25 rxn · SP6','€625','https://checkout.teya.com/pbl/019f8f68-5ad6-7b3d-9a55-4fbd5aa7f125')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT06050</td>
-          <td>50 rxn · SP6</td>
+          <td class="col-sku">AKT06050</td><td>50 rxn · SP6</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f69-fb5a-78e9-9319-3735afd01cf7" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ ARCA (Cap-0)','AKT06050','50 rxn · SP6','€1,250','https://checkout.teya.com/pbl/019f8f69-fb5a-78e9-9319-3735afd01cf7')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT17025</td>
-          <td>25 rxn · T7</td>
+          <td class="col-sku">AKT17025</td><td>25 rxn · T7</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f82-cfe0-7bb1-9d33-243a302b8e8e" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-ARCA (Cap-0)','AKT17025','25 rxn · T7','€625','https://checkout.teya.com/pbl/019f8f82-cfe0-7bb1-9d33-243a302b8e8e')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT17050</td>
-          <td>50 rxn · T7</td>
+          <td class="col-sku">AKT17050</td><td>50 rxn · T7</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f83-871a-71e8-8ecb-7ac500f9caa4" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-ARCA (Cap-0)','AKT17050','50 rxn · T7','€1,250','https://checkout.teya.com/pbl/019f8f83-871a-71e8-8ecb-7ac500f9caa4')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT16025</td>
-          <td>25 rxn · SP6</td>
+          <td class="col-sku">AKT16025</td><td>25 rxn · SP6</td>
           <td class="col-price">€625 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f84-3ffb-7f2a-8f8c-2e33d09081b6" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-ARCA (Cap-0)','AKT16025','25 rxn · SP6','€625','https://checkout.teya.com/pbl/019f8f84-3ffb-7f2a-8f8c-2e33d09081b6')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-ARCA <span style="color:var(--muted);font-size:0.82rem;">(Cap-0)</span></td>
-          <td class="col-sku">AKT16050</td>
-          <td>50 rxn · SP6</td>
+          <td class="col-sku">AKT16050</td><td>50 rxn · SP6</td>
           <td class="col-price">€1,250 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f84-ff5e-72ea-8039-fc21820bba7e" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-ARCA (Cap-0)','AKT16050','50 rxn · SP6','€1,250','https://checkout.teya.com/pbl/019f8f84-ff5e-72ea-8039-fc21820bba7e')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
-          <td class="col-sku">CKT07010</td>
-          <td>10 rxn · T7</td>
+          <td class="col-sku">CKT07010</td><td>10 rxn · T7</td>
           <td class="col-price">€260 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f86-214c-74ca-b6aa-5594d9dda41e" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ Co-Cap™ A (Cap-1)','CKT07010','10 rxn · T7','€260','https://checkout.teya.com/pbl/019f8f86-214c-74ca-b6aa-5594d9dda41e')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
-          <td class="col-sku">CKT07025</td>
-          <td>25 rxn · T7</td>
+          <td class="col-sku">CKT07025</td><td>25 rxn · T7</td>
           <td class="col-price">€650 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f86-b3a3-7e52-8669-9cd5fd32c554" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ Co-Cap™ A (Cap-1)','CKT07025','25 rxn · T7','€650','https://checkout.teya.com/pbl/019f8f86-b3a3-7e52-8669-9cd5fd32c554')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
-          <td class="col-sku">CKT17010</td>
-          <td>10 rxn · T7</td>
+          <td class="col-sku">CKT17010</td><td>10 rxn · T7</td>
           <td class="col-price">€260 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f87-685f-72dd-afa2-f3b0b0301b47" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-Co-Cap™ A (Cap-1)','CKT17010','10 rxn · T7','€260','https://checkout.teya.com/pbl/019f8f87-685f-72dd-afa2-f3b0b0301b47')">Buy now</button></td>
         </tr>
         <tr>
           <td>NorthScribe™ m¹Ψ-Co-Cap™ A <span style="color:var(--muted);font-size:0.82rem;">(Cap-1)</span></td>
-          <td class="col-sku">CKT17025</td>
-          <td>25 rxn · T7</td>
+          <td class="col-sku">CKT17025</td><td>25 rxn · T7</td>
           <td class="col-price">€650 <span class="col-vat">excl. VAT</span></td>
-          <td class="col-actions"><a class="btn-buy" href="https://checkout.teya.com/pbl/019f8f88-08d1-78e6-ae22-e0d2501a14bb" target="_blank" rel="noopener">Buy now</a></td>
+          <td class="col-actions"><button class="btn-buy" onclick="openOrder('NorthScribe™ m¹Ψ-Co-Cap™ A (Cap-1)','CKT17025','25 rxn · T7','€650','https://checkout.teya.com/pbl/019f8f88-08d1-78e6-ae22-e0d2501a14bb')">Buy now</button></td>
         </tr>
       </tbody>
     </table>
@@ -440,6 +476,89 @@
     <a class="btn-contact" href="mailto:sales@ternariabio.com?subject=Special%20Order%20Inquiry%20-%20Ternaria%20Biosciences">Contact sales →</a>
   </div>
 
+</div>
+
+<!-- ── ORDER MODAL ── -->
+<div class="modal-overlay" id="orderModal" onclick="closeOnOverlay(event)">
+  <div class="modal">
+
+    <!-- Form view -->
+    <div id="modalForm">
+      <div class="modal-header">
+        <div>
+          <h3>Shipping &amp; contact details</h3>
+          <div class="modal-product-badge" id="modalProductBadge"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-summary">
+          <span class="modal-summary-label" id="modalProductLabel">—</span>
+          <span class="modal-summary-price" id="modalPriceLabel">—</span>
+        </div>
+        <form id="orderForm">
+          <input type="hidden" name="product" id="hiddenProduct" />
+          <input type="hidden" name="sku" id="hiddenSku" />
+          <input type="hidden" name="size" id="hiddenSize" />
+          <input type="hidden" name="price" id="hiddenPrice" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fieldName">Full name *</label>
+              <input type="text" id="fieldName" name="name" required placeholder="Jane Smith" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="fieldEmail">Email *</label>
+              <input type="email" id="fieldEmail" name="email" required placeholder="jane@university.edu" autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fieldInstitution">Institution / Company *</label>
+            <input type="text" id="fieldInstitution" name="institution" required placeholder="University of Iceland" autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="fieldAddress">Street address *</label>
+            <input type="text" id="fieldAddress" name="address" required placeholder="Reykjavík Road 1" autocomplete="street-address" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fieldCity">City *</label>
+              <input type="text" id="fieldCity" name="city" required placeholder="Reykjavik" autocomplete="address-level2" />
+            </div>
+            <div class="form-group">
+              <label for="fieldPostal">Postal code *</label>
+              <input type="text" id="fieldPostal" name="postal" required placeholder="101" autocomplete="postal-code" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fieldCountry">Country *</label>
+            <input type="text" id="fieldCountry" name="country" required placeholder="Iceland" autocomplete="country-name" />
+          </div>
+          <div class="form-group">
+            <label for="fieldVat">VAT number <span class="opt">(optional)</span></label>
+            <input type="text" id="fieldVat" name="vat" placeholder="IS123456789" />
+          </div>
+          <div class="form-group">
+            <label for="fieldNotes">Order notes <span class="opt">(optional)</span></label>
+            <input type="text" id="fieldNotes" name="notes" placeholder="e.g. PO number, special delivery instructions" />
+          </div>
+          <hr class="modal-divider" />
+          <button type="submit" class="btn-continue" id="continueBtn">
+            <span class="spinner"></span>
+            <span class="btn-text">Continue to payment →</span>
+          </button>
+          <p class="modal-note">Your email client will open with your details pre-filled — just hit Send. You will then be taken to the secure Teya payment page.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success view -->
+    <div class="modal-success" id="modalSuccess">
+      <div class="check">✓</div>
+      <h3>Details received!</h3>
+      <p>Opening the payment page now…<br>If it does not open automatically, <a id="manualPayLink" href="#" target="_blank">click here</a>.</p>
+    </div>
+
+  </div>
 </div>
 
 <!-- ── FOOTER ── -->
@@ -475,6 +594,86 @@
   </div>
 </footer>
 
+<script>
+  var currentTeyaUrl = '';
+
+  function openOrder(product, sku, size, price, teyaUrl) {
+    currentTeyaUrl = teyaUrl;
+    document.getElementById('modalProductBadge').textContent = sku + ' · ' + size;
+    document.getElementById('modalProductLabel').textContent = product;
+    document.getElementById('modalPriceLabel').textContent = price + ' excl. VAT';
+    document.getElementById('hiddenProduct').value = product;
+    document.getElementById('hiddenSku').value = sku;
+    document.getElementById('hiddenSize').value = size;
+    document.getElementById('hiddenPrice').value = price;
+    document.getElementById('manualPayLink').href = teyaUrl;
+    document.getElementById('modalForm').style.display = '';
+    document.getElementById('modalSuccess').classList.remove('show');
+    document.getElementById('orderModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('orderModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeOnOverlay(e) {
+    if (e.target === document.getElementById('orderModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var product  = document.getElementById('hiddenProduct').value;
+    var sku      = document.getElementById('hiddenSku').value;
+    var size     = document.getElementById('hiddenSize').value;
+    var price    = document.getElementById('hiddenPrice').value;
+    var name     = document.getElementById('fieldName').value;
+    var email    = document.getElementById('fieldEmail').value;
+    var inst     = document.getElementById('fieldInstitution').value;
+    var address  = document.getElementById('fieldAddress').value;
+    var city     = document.getElementById('fieldCity').value;
+    var postal   = document.getElementById('fieldPostal').value;
+    var country  = document.getElementById('fieldCountry').value;
+    var vat      = document.getElementById('fieldVat').value;
+    var notes    = document.getElementById('fieldNotes').value;
+
+    var subject = encodeURIComponent('Order: ' + product + ' (' + sku + ') — ' + price);
+    var body = encodeURIComponent(
+      'ORDER DETAILS\n' +
+      '─────────────────────────────\n' +
+      'Product:    ' + product + '\n' +
+      'SKU:        ' + sku + '\n' +
+      'Pack size:  ' + size + '\n' +
+      'Price:      ' + price + ' excl. VAT\n\n' +
+      'CONTACT & SHIPPING\n' +
+      '─────────────────────────────\n' +
+      'Name:       ' + name + '\n' +
+      'Email:      ' + email + '\n' +
+      'Institution:' + inst + '\n' +
+      'Address:    ' + address + '\n' +
+      'City:       ' + city + '\n' +
+      'Postal:     ' + postal + '\n' +
+      'Country:    ' + country + '\n' +
+      (vat   ? 'VAT no.:    ' + vat + '\n'   : '') +
+      (notes ? 'Notes:      ' + notes + '\n' : '')
+    );
+
+    window.location.href = 'mailto:sales@ternariabio.com?subject=' + subject + '&body=' + body;
+
+    // Open Teya payment in new tab after short delay
+    setTimeout(function() {
+      document.getElementById('modalForm').style.display = 'none';
+      document.getElementById('modalSuccess').classList.add('show');
+      window.open(currentTeyaUrl, '_blank');
+    }, 800);
+  });
+</script>
 <script src="cart.js"></script>
 </body>
 </html>
