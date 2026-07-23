@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cart.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -256,6 +257,20 @@
     table.order-table .fmt-sku { color: var(--muted); font-size: 0.85rem; }
     table.order-table .ord-btn { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.85rem; text-decoration: none; }
     table.order-table .ord-btn:hover { gap: 0.65rem; }
+    .order-cell-actions { display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-start; }
+    .buy-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--teal); color: #fff;
+      font-weight: 600; font-size: 0.85rem; text-decoration: none;
+      padding: 0.5rem 1.1rem; border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .buy-btn:hover { background: var(--navy); transform: translateY(-1px); }
+    .order-quote-link { font-size: 0.78rem; color: var(--muted); text-decoration: none; padding-left: 0.2rem; }
+    .order-quote-link:hover { color: var(--teal); }
+    .order-bulk-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); }
+    .order-bulk-note a { color: var(--teal-lt); text-decoration: none; font-weight: 500; }
+    .order-bulk-note a:hover { color: var(--teal); }
 
     /* ── CTA SECTION ── */
     .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
@@ -449,28 +464,42 @@
   <div class="section-inner">
     <span class="section-label">Order</span>
     <h2 class="section-title">Pack sizes &amp; <em>pricing.</em></h2>
-    <p class="section-desc">Get in touch to get more information and a quote.</p>
+    <p class="section-desc">Standard pack sizes available for immediate purchase. Custom volumes on request.</p>
     <table class="order-table">
-      <tr><th>Product</th><th>SKU</th><th>Pack size</th><th></th></tr>
+      <tr><th>Product</th><th>SKU</th><th>Pack size</th><th class="price-col">Price</th><th>Order</th></tr>
       <tr>
         <td>SP6 RNA Polymerase (Glycerol-based)</td>
         <td class="fmt-sku">Z0611</td>
         <td>3,000 U</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=SP6%20RNA%20Polymerase%20(Glycerol-based%2C%20Z0611)%20-%20Website%20Inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">€330</span><span class="price-unit">excl. VAT</span></td>
+        <td>
+          <div class="order-cell-actions">
+            <button class="add-to-cart-btn" data-sku="Z0611" data-name="SP6 RNA Polymerase (Glycerol-based)" data-size="3,000 U" data-price="330" data-price-display="€330" data-teya-link="https://checkout.teya.com/pbl/019f8f58-1429-7fcb-8240-838ba2dd11c8">Add to cart</button>
+            <a class="order-quote-link" href="https://checkout.teya.com/pbl/019f8f58-1429-7fcb-8240-838ba2dd11c8" target="_blank" rel="noopener">or buy now →</a>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>SP6 RNA Polymerase (Glycerol-based)</td>
         <td class="fmt-sku">Z0613</td>
         <td>10,000 U</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=SP6%20RNA%20Polymerase%20(Glycerol-based%2C%20Z0613)%20-%20Website%20Inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">€1,100</span><span class="price-unit">excl. VAT</span></td>
+        <td>
+          <div class="order-cell-actions">
+            <button class="add-to-cart-btn" data-sku="Z0613" data-name="SP6 RNA Polymerase (Glycerol-based)" data-size="10,000 U" data-price="1100" data-price-display="€1,100" data-teya-link="https://checkout.teya.com/pbl/019f8f59-6678-75e8-bffd-01d807e6c386">Add to cart</button>
+            <a class="order-quote-link" href="https://checkout.teya.com/pbl/019f8f59-6678-75e8-bffd-01d807e6c386" target="_blank" rel="noopener">or buy now →</a>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>SP6 RNA Polymerase (Glycerol-based)</td>
         <td class="fmt-sku">Z061X</td>
         <td>Custom</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=SP6%20RNA%20Polymerase%20(Glycerol-based%2C%20Z061X)%20-%20Website%20Inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">–</span><span class="price-unit">on request</span></td>
+        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=SP6%20RNA%20Polymerase%20(Glycerol-based%2C%20Z061X)%20-%20Website%20Inquiry">Get a quote →</a></td>
       </tr>
     </table>
+    <p class="order-bulk-note">Bulk or institutional orders? <a href="mailto:sales@ternariabio.com?subject=SP6%20RNA%20Polymerase%20-%20Bulk%20Inquiry">Contact us</a> for volume pricing.</p>
   </div>
 </section>
 
@@ -528,6 +557,7 @@
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+<script src="cart.js"></script>
 </body>
 </html>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

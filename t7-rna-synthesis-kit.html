@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cart.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -236,6 +237,14 @@
     table.order-table .fmt-sku { color: var(--muted); font-size: 0.85rem; }
     table.order-table .ord-btn { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--teal-lt); font-weight: 600; font-size: 0.85rem; text-decoration: none; }
     table.order-table .ord-btn:hover { gap: 0.65rem; }
+    .order-cell-actions { display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-start; }
+    .buy-btn { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--teal); color: #fff; font-weight: 600; font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1.1rem; border-radius: 8px; transition: background 0.2s, transform 0.15s; }
+    .buy-btn:hover { background: var(--navy); transform: translateY(-1px); }
+    .order-quote-link { font-size: 0.78rem; color: var(--muted); text-decoration: none; padding-left: 0.2rem; }
+    .order-quote-link:hover { color: var(--teal); }
+    .order-bulk-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); }
+    .order-bulk-note a { color: var(--teal-lt); text-decoration: none; font-weight: 500; }
+    .order-bulk-note a:hover { color: var(--teal); }
 
     /* ── CTA SECTION ── */
     .cta-section { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-lt) 100%); padding: 5rem 2rem; text-align: center; }
@@ -456,28 +465,47 @@
   <div class="section-inner">
     <span class="section-label">Order</span>
     <h2 class="section-title">Pack sizes &amp; <em>pricing.</em></h2>
-    <p class="section-desc">Get in touch to get more information and a quote.</p>
+    <p class="section-desc">Standard pack sizes available for immediate purchase. Custom volumes on request.</p>
     <table class="order-table">
-      <tr><th>Product</th><th>SKU</th><th>Pack size</th><th></th></tr>
+      <tr><th>Product</th><th>SKU</th><th>Pack size</th><th class="price-col">Price</th><th>Order</th></tr>
       <tr>
         <td>T7 RNA Synthesis Kit</td>
         <td class="fmt-sku">KS07025</td>
         <td>25 reactions</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Synthesis%20Kit%2025%20reactions%20(KS07025)%20-%20Web%20inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">€200</span><span class="price-unit">excl. VAT</span></td>
+        <td>
+          <div class="order-cell-actions">
+            <button class="add-to-cart-btn" data-sku="KS07025" data-name="T7 RNA Synthesis Kit" data-size="25 reactions" data-price="200" data-price-display="€200" data-teya-link="https://checkout.teya.com/pbl/019f8f5a-ddab-7fc9-a9c8-0a1ea9b00093">Add to cart</button>
+            <a class="order-quote-link" href="https://checkout.teya.com/pbl/019f8f5a-ddab-7fc9-a9c8-0a1ea9b00093" target="_blank" rel="noopener">or buy now →</a>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>T7 RNA Synthesis Kit</td>
         <td class="fmt-sku">KS07050</td>
         <td>50 reactions</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Synthesis%20Kit%2050%20reactions%20(KS07050)%20-%20Web%20Inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">€400</span><span class="price-unit">excl. VAT</span></td>
+        <td>
+          <div class="order-cell-actions">
+            <button class="add-to-cart-btn" data-sku="KS07050" data-name="T7 RNA Synthesis Kit" data-size="50 reactions" data-price="400" data-price-display="€400" data-teya-link="https://checkout.teya.com/pbl/019f8f5c-348a-79ef-af80-7331d842905d">Add to cart</button>
+            <a class="order-quote-link" href="https://checkout.teya.com/pbl/019f8f5c-348a-79ef-af80-7331d842905d" target="_blank" rel="noopener">or buy now →</a>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>T7 RNA Synthesis Kit</td>
         <td class="fmt-sku">KS070200</td>
         <td>200 reactions</td>
-        <td><a class="ord-btn" href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Synthesis%20Kit%20200%20reactions%20(KS070200)%20-%20Website%20Inquiry">Contact us →</a></td>
+        <td class="price-col"><span class="price-display">€1,300</span><span class="price-unit">excl. VAT</span></td>
+        <td>
+          <div class="order-cell-actions">
+            <button class="add-to-cart-btn" data-sku="KS070200" data-name="T7 RNA Synthesis Kit" data-size="200 reactions" data-price="1300" data-price-display="€1,300" data-teya-link="https://checkout.teya.com/pbl/019f8f5d-c05a-778b-810b-d2f2b9e33325">Add to cart</button>
+            <a class="order-quote-link" href="https://checkout.teya.com/pbl/019f8f5d-c05a-778b-810b-d2f2b9e33325" target="_blank" rel="noopener">or buy now →</a>
+          </div>
+        </td>
       </tr>
     </table>
+    <p class="order-bulk-note">Bulk or institutional orders? <a href="mailto:sales@ternariabio.com?subject=T7%20RNA%20Synthesis%20Kit%20-%20Bulk%20Inquiry">Contact us</a> for volume pricing.</p>
   </div>
 </section>
 
@@ -535,6 +563,7 @@
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+<script src="cart.js"></script>
 </body>
 </html>
                                                             
