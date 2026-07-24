@@ -940,42 +940,56 @@
     var vat     = document.getElementById('fVat').value;
     var notes   = document.getElementById('fNotes').value;
 
-    /* Build email body */
+    /* Build order lines */
     var itemLines = items.map(function(it) {
-      var line = '  ' + it.product + ' (' + it.sku + ') · ' + it.size;
+      var line = it.product + ' (' + it.sku + ') · ' + it.size;
       if (it.qty > 1) line += ' × ' + it.qty;
       line += ' — €' + (parseInt(it.price) * it.qty);
       return line;
     }).join('\n');
 
-    var subject = encodeURIComponent('Order from ' + name + ' — ' + inst);
-    var body = encodeURIComponent(
-      'ORDER DETAILS\n' +
-      '──────────────────────────────────\n' +
-      itemLines + '\n\n' +
-      'Subtotal:     €' + subtotal + ' excl. VAT\n' +
-      'Shipping:     ' + shippingInfo.label + (shippingCost > 0 ? ' (€' + shippingCost + ')' : ' (Free)') + ' — ' + shipMethod + '\n' +
-      'TOTAL:        €' + grandTotal + ' excl. VAT\n\n' +
-      'CONTACT & SHIPPING\n' +
-      '──────────────────────────────────\n' +
-      'Name:         ' + name + '\n' +
-      'Email:        ' + email + '\n' +
-      'Institution:  ' + inst + '\n' +
-      'Address:      ' + addr + '\n' +
-      'City:         ' + city + '\n' +
-      'Postal:       ' + postal + '\n' +
-      'Country:      ' + country + '\n' +
-      (vat   ? 'VAT no.:      ' + vat + '\n'   : '') +
-      (notes ? 'Notes:        ' + notes + '\n' : '')
-    );
+    /* Send via Formspree */
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
 
-    window.location.href = 'mailto:ternariabio@ternariabio.com?subject=' + subject + '&body=' + body;
-
-    /* Show success after short delay */
-    setTimeout(function() {
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('successBox').classList.add('show');
-    }, 800);
+    fetch('https://formspree.io/f/meeyrpld', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject:    'Order from ' + name + ' — ' + inst,
+        _replyto:    email,
+        order_items: itemLines,
+        subtotal:    '€' + subtotal + ' excl. VAT',
+        shipping:    shippingInfo.label + (shippingCost > 0 ? ' (€' + shippingCost + ')' : ' (Free)') + ' — ' + shipMethod,
+        total:       '€' + grandTotal + ' excl. VAT',
+        name:        name,
+        email:       email,
+        institution: inst,
+        address:     addr,
+        city:        city,
+        postal:      postal,
+        country:     country,
+        vat:         vat   || '—',
+        notes:       notes || '—'
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successBox').classList.add('show');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Place Order';
+        alert('Something went wrong. Please email us at ternariabio@ternariabio.com');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Place Order';
+      alert('Something went wrong. Please email us at ternariabio@ternariabio.com');
+    });
   });
 
   /* ── INIT ── */
