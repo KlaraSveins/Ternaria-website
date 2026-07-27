@@ -768,12 +768,16 @@
           <span class="lbl">Shipping</span>
           <span class="val" id="summaryShipping">Free</span>
         </div>
+        <div class="summary-line" id="vatRow" style="display:none;">
+          <span class="lbl">VSK 24%</span>
+          <span class="val" id="summaryVat">€0</span>
+        </div>
         <hr class="summary-divider" />
         <div class="summary-line total">
           <span class="lbl">Total</span>
           <span class="val" id="summaryTotal">€0</span>
         </div>
-        <p class="summary-vat">excl. VAT</p>
+        <p class="summary-vat" id="vatNote">excl. VAT</p>
         <div class="summary-ship-badge" id="summaryShipBadge">
           🇮🇸 <strong>Iceland</strong> — Free delivery
         </div>
@@ -884,7 +888,9 @@
       shippingCost = regionCost;
     }
     var shippingInfo = SHIPPING[String(regionCost)];
-    var grandTotal   = subtotal + shippingCost;
+    var isIceland    = document.getElementById('fCountry').value === 'Iceland';
+    var vatAmount    = isIceland ? Math.round((subtotal + shippingCost) * 0.24) : 0;
+    var grandTotal   = subtotal + shippingCost + vatAmount;
 
     /* Render summary items */
     var itemsEl = document.getElementById('summaryItems');
@@ -904,6 +910,9 @@
     /* Totals */
     document.getElementById('summarySubtotal').textContent = '€' + subtotal;
     document.getElementById('summaryShipping').textContent = shippingCost === 0 ? 'Free' : '€' + shippingCost;
+    document.getElementById('vatRow').style.display = isIceland ? 'flex' : 'none';
+    document.getElementById('summaryVat').textContent = '€' + vatAmount;
+    document.getElementById('vatNote').textContent = isIceland ? 'incl. VSK 24%' : 'excl. VAT';
     document.getElementById('summaryTotal').textContent    = '€' + grandTotal;
 
     /* Ship badge */
@@ -922,8 +931,9 @@
     r.addEventListener('change', updateSummary);
   });
 
-  /* ── COUNTRY → PHONE PREFIX ── */
+  /* ── COUNTRY → VAT + PHONE PREFIX ── */
   document.getElementById('fCountry').addEventListener('change', function() {
+    updateSummary();
     var dial = this.options[this.selectedIndex].dataset.dial || '';
     var phone = document.getElementById('fPhone');
     if (!phone.value || /^\+\d+\s*$/.test(phone.value)) {
@@ -981,7 +991,9 @@
     var shippingCost  = (allLyoSubmit && regionCostSub !== 0) ? 133 : regionCostSub;
     var shippingInfo  = SHIPPING[String(regionCostSub)];
     var subtotal      = items.reduce(function(s, it) { return s + parseInt(it.price) * it.qty; }, 0);
-    var grandTotal    = subtotal + shippingCost;
+    var isIcelandSub  = country === 'Iceland';
+    var vatAmountSub  = isIcelandSub ? Math.round((subtotal + shippingCost) * 0.24) : 0;
+    var grandTotal    = subtotal + shippingCost + vatAmountSub;
     var shipMethod    = (allLyoSubmit && regionCostSub !== 0) ? 'Ambient temperature (lyophilized)' : 'Cold chain';
 
     /* Contact fields */
@@ -1018,7 +1030,8 @@
         order_items: itemLines,
         subtotal:    '€' + subtotal + ' excl. VAT',
         shipping:    shippingInfo.label + (shippingCost > 0 ? ' (€' + shippingCost + ')' : ' (Free)') + ' — ' + shipMethod,
-        total:       '€' + grandTotal + ' excl. VAT',
+        vat:         isIcelandSub ? 'VSK 24% — €' + vatAmountSub : 'N/A (excl. VAT)',
+        total:       '€' + grandTotal + (isIcelandSub ? ' incl. VSK' : ' excl. VAT'),
         name:        name,
         email:       email,
         phone:       phone  || '—',
