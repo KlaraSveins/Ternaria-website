@@ -172,6 +172,19 @@
       section { padding: 3.5rem 1.25rem; }
       .stat-item { padding: 0.5rem 1.25rem; }
     }
+
+    .featured-event { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 2.5rem; box-shadow: 0 14px 40px rgba(33,58,93,0.08); }
+    .featured-event img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block; }
+    .featured-body { padding: 2.4rem 2.4rem 2.2rem; display: flex; flex-direction: column; justify-content: center; }
+    .featured-kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+    .featured-body h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.8rem; line-height: 1.2; color: var(--navy); margin-bottom: 0.5rem; }
+    .featured-date { font-size: 0.95rem; font-weight: 600; color: var(--teal); margin-bottom: 1rem; }
+    .featured-body p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .featured-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .btn-book { display: inline-flex; background: var(--cyan); color: var(--navy); font-weight: 700; font-size: 0.88rem; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: var(--radius); }
+    .featured-actions .conf-site-link { font-size: 0.88rem; font-weight: 600; color: var(--teal-lt); text-decoration: none; }
+    .conf-card img.fallback-img { background: linear-gradient(135deg, var(--teal), var(--navy)); }
+    @media (max-width: 900px) { .featured-event { grid-template-columns: 1fr; } .featured-event img { min-height: 220px; height: 220px; } .featured-body { padding: 1.6rem; } }
   </style>
 </head>
 <body>
@@ -182,7 +195,8 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html#mission">Company</a></li>
-    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="index.html#platform">Platform</a></li>
+    <li><a href="index.html#evidence">Evidence</a></li>
     <li><a href="index.html#team">Team</a></li>
     <li><a href="index.html#products">Products</a></li>
     <li><a href="events.html" class="active">Events</a></li>
@@ -246,37 +260,20 @@
   <div class="section-inner">
     <span class="section-label">On the calendar</span>
     <h2 class="section-title">Upcoming conferences and meetings.</h2>
-    <p class="section-desc">Come find us — we'll be presenting and connecting with the RNA and developmental biology communities at the following events.</p>
+    <p class="section-desc">Come meet us — we'll be connecting with the RNA and developmental biology communities at the following events.</p>
 
-    <div class="upcoming-grid">
-
-      <div class="upcoming-card">
-        <img src="https://static.wixstatic.com/media/9105b7_a8d9dd5b375a48b3a47a9fd4ce3accd5~mv2.png/v1/fill/w_440,h_280,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Prague.png" alt="Prague, Czech Republic" />
-        <div class="upcoming-body">
-          <h3>European Amphibian Conference 2026</h3>
-          <div class="upcoming-date">July 3–5 · Prague, Czech Republic</div>
-          <a class="conf-site-link" href="https://amphib-conf2026.sciencesconf.org/" target="_blank" rel="noopener">Conference site →</a>
-        </div>
-      </div>
-
-<div class="upcoming-card">
-        <img src="https://static.wixstatic.com/media/9105b7_a46f7fad96d6494ab0f4b6cd7ea2ae72~mv2.jpg/v1/fill/w_440,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Heidelberh.jpg" alt="Heidelberg, Germany" />
-        <div class="upcoming-body">
-          <h3>1st German Fish Model Research Meeting</h3>
-          <div class="upcoming-date">September 16–18, 2026 · Heidelberg University, Germany</div>
-          <a class="conf-site-link" href="https://www.germanfishmeeting.org/" target="_blank" rel="noopener">Conference site →</a>
-        </div>
-      </div>
-
-      <div class="upcoming-card">
-        <img src="https://static.wixstatic.com/media/9105b7_67bf35acc50747fa86e8c173cc31b5a5~mv2.webp/v1/fill/w_440,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20harbor.webp" alt="Boston, Massachusetts" />
-        <div class="upcoming-body">
-          <h3>14th International mRNA Health Conference</h3>
-          <div class="upcoming-date">November 2026 · Boston, USA</div>
+    <div class="featured-event">
+      <img src="https://static.wixstatic.com/media/9105b7_67bf35acc50747fa86e8c173cc31b5a5~mv2.webp/v1/fill/w_900,h_560,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20harbor.webp" alt="Boston harbor, Massachusetts" />
+      <div class="featured-body">
+        <span class="featured-kicker">Meet us in Boston</span>
+        <h3>14th International mRNA Health Conference</h3>
+        <div class="featured-date">November 17–19, 2026 · Boston, USA</div>
+        <p>Our CEO, Margrét Helga Ögmundsdóttir, will be attending the leading international meeting on mRNA therapeutics in Boston. If you'd like to meet her to discuss ArtPure™, ArtRNA™ or a partnership, let us know and we'll set up a meeting.</p>
+        <div class="featured-actions">
+          <a class="btn-book" href="mailto:sales@ternariabio.com?subject=Meeting%20at%20mRNA%20Health%20Conference%2C%20Boston">Book a meeting →</a>
           <a class="conf-site-link" href="https://mrna-conference.com/" target="_blank" rel="noopener">Conference site →</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -285,9 +282,29 @@
   <div class="section-inner">
     <span class="section-label">Where we've been</span>
     <h2 class="section-title">Past conferences and meetings.</h2>
-    <p class="section-desc">A look back at the conferences, meetings and delegations Ternaria has taken part in over the past year.</p>
+    <p class="section-desc">A look back at the conferences, meetings and delegations Ternaria has taken part in.</p>
 
     <div class="conf-grid">
+
+      <a class="conf-card" href="https://mrnamedicines.org/events/2026-annual-meeting/" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hotel-Del-Coronado-Beach-cropped.jpg?width=403" alt="Coronado, California" onerror="this.onerror=null;this.removeAttribute('src');this.classList.add('fallback-img');" />
+        <span>ASCENT 2026, Alliance for mRNA Medicines, Coronado, California — Oct 28–30, 2026</span>
+      </a>
+
+      <a class="conf-card" href="https://danish-rna-society.nemtilmeld.dk/10/" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Denmark-odense_palace.jpg?width=403" alt="Odense, Denmark" onerror="this.onerror=null;this.removeAttribute('src');this.classList.add('fallback-img');" />
+        <span>Danish RNA Society 11th Annual Meeting, Odense — Oct 22, 2026</span>
+      </a>
+
+      <a class="conf-card" href="https://www.germanfishmeeting.org/" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_a46f7fad96d6494ab0f4b6cd7ea2ae72~mv2.jpg/v1/fill/w_403,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Heidelberh.jpg" alt="Heidelberg, Germany" />
+        <span>1st German Fish Model Research Meeting, Heidelberg — Sept 16–18, 2026</span>
+      </a>
+
+      <a class="conf-card" href="https://amphib-conf2026.sciencesconf.org/" target="_blank" rel="noopener">
+        <img src="https://static.wixstatic.com/media/9105b7_a8d9dd5b375a48b3a47a9fd4ce3accd5~mv2.png/v1/fill/w_403,h_334,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Prague.png" alt="Prague, Czech Republic" />
+        <span>European Amphibian Conference 2026, Prague — July 3–5, 2026</span>
+      </a>
 
       <a class="conf-card" href="https://informaconnect.com/lsx-nordic-congress/" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn%20Copenhagen%202.jpg?width=403" alt="Copenhagen, Denmark" />
