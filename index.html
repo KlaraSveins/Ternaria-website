@@ -15,7 +15,7 @@
   <meta property="og:image:alt" content="Ternaria Biosciences — The Quality RNA Company" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://ternariabio.com/og-image.jpg" />
-  <meta name="description" content="Ternaria Biosciences is an Icelandic biotech company developing next-generation RNA technologies through our proprietary ArtPure™ purification platform." />
+  <meta name="description" content="Ternaria Biosciences develops ultra-pure RNA polymerases and purpose-built mRNA: one integrated platform from your therapeutic goal to high-quality mRNA, with scalability and supply security built into every step." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -595,6 +595,199 @@
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
     }
+    /* ===== DRAFT: sections from Company Overview (Oct 2026) ===== */
+    .section-head { max-width: 900px; margin-bottom: 3rem; }
+    .section-head .section-body { max-width: 680px; }
+    .section-title em { font-style: italic; color: var(--cyan); }
+
+    /* WHO WE ARE (slide 2) */
+    .who { background: var(--ice-lt); }
+    .who-top { margin-bottom: 3.5rem; }
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .who-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--cyan); border-radius: var(--radius); padding: 1.9rem 1.75rem 2rem; }
+    .who-card:nth-child(2) { border-top-color: var(--teal); }
+    .who-card:nth-child(3) { border-top-color: var(--navy); }
+    .who-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.4rem; line-height: 1; margin-bottom: 0.9rem; }
+    .who-card:nth-child(1) .who-num { color: var(--cyan); }
+    .who-card:nth-child(2) .who-num { color: var(--teal); }
+    .who-card:nth-child(3) .who-num { color: var(--navy); }
+    .who-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .who-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+    .who-card strong { color: var(--navy); font-weight: 600; }
+
+    /* PLATFORM FLOW (slide 3) */
+    .platform { background: var(--white); }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; position: relative; }
+    .step { position: relative; border-radius: var(--radius); padding: 1.75rem 1.5rem 1.9rem; border: 1px solid var(--border); background: var(--ice-lt); }
+    .step.dark  { background: var(--navy); border-color: var(--navy); }
+    .step.green { background: #4a7a3a; border-color: #4a7a3a; }
+    .step:not(:last-child)::after {
+      content: '→'; position: absolute; top: 1.85rem; right: -1.35rem; z-index: 2;
+      width: 1.1rem; text-align: center; color: var(--cyan); font-weight: 700; font-size: 1.1rem;
+    }
+    .step-kicker { display: flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; }
+    .step-icon { width: 34px; height: 34px; border-radius: 50%; background: var(--cyan); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-icon svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .step.dark .step-kicker, .step.green .step-kicker { color: #fff; }
+    .step h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.7rem; line-height: 1.15; color: var(--navy); }
+    .step .step-sub { font-size: 0.85rem; font-style: italic; color: var(--muted); margin: 0.3rem 0 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .step.dark h3, .step.green h3 { color: #fff; }
+    .step.dark .step-sub, .step.green .step-sub { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.2); }
+    .step ul { list-style: none; }
+    .step li { position: relative; padding-left: 1rem; font-size: 0.86rem; line-height: 1.5; color: var(--text); margin-bottom: 0.55rem; }
+    .step li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
+    .step.dark li, .step.green li { color: rgba(255,255,255,0.9); }
+    .step.dark li::before, .step.green li::before { background: #fff; }
+    .step-link { display: inline-block; margin-top: 0.6rem; color: #fff; font-size: 0.82rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    .integrated { margin-top: 1.75rem; display: grid; grid-template-columns: auto repeat(3, 1fr); gap: 2rem; align-items: center; background: var(--ice-lt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; }
+    .integrated-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); line-height: 1.6; }
+    .int-item { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .int-dot { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .int-dot svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .int-item strong { display: block; font-size: 0.98rem; margin-bottom: 0.15rem; }
+    .int-item div span { font-size: 0.82rem; color: var(--muted); line-height: 1.5; display: block; }
+
+    /* EVIDENCE (slide 4) */
+    .evidence { background: var(--navy); color: #fff; }
+    .evidence .section-label { color: var(--cyan); }
+    .evidence .section-title { color: #fff; }
+    .ev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ev-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 1.6rem 1.5rem 1.5rem; display: flex; flex-direction: column; }
+    .ev-kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.7rem; }
+    .ev-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .ev-card .ev-sub { font-size: 0.8rem; color: rgba(255,255,255,0.6); padding-bottom: 1rem; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .chart { display: grid; grid-template-columns: 16px 30px 1fr; grid-template-rows: 190px auto; column-gap: 0.35rem; }
+    .y-title { position: relative; }
+    .y-title span { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(-90deg); white-space: nowrap; font-size: 0.68rem; color: rgba(255,255,255,0.55); letter-spacing: 0.02em; }
+    .y-ticks { position: relative; }
+    .y-ticks span { position: absolute; right: 0; transform: translateY(50%); font-size: 0.68rem; color: rgba(255,255,255,0.55); font-variant-numeric: tabular-nums; }
+    .plot { position: relative; border-left: 1px solid rgba(255,255,255,0.35); border-bottom: 1px solid rgba(255,255,255,0.35); }
+    .grid i { position: absolute; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.09); }
+    .bars { position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 1rem; padding: 0 0.75rem; }
+    .bar { flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+    .bar-fill { position: relative; width: 100%; max-width: 64px; background: #5d7593; border-radius: 3px 3px 0 0; }
+    .bar-val { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 0.3rem; font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .bar.us .bar-fill { background: var(--cyan); }
+    .bar.us .bar-val { color: var(--cyan); }
+    .bar-names { display: flex; gap: 1rem; padding: 0.5rem 0.75rem 0; }
+    .bar-names span { flex: 1; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+    .ev-unit { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem; }
+    .ev-note { font-size: 0.82rem; color: rgba(255,255,255,0.72); margin-top: 0.6rem; line-height: 1.5; }
+    .fish { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .fish figure { margin: 0; text-align: center; }
+    .fish img { width: 100%; aspect-ratio: 399/217; object-fit: cover; display: block; background: #000; border-radius: 4px; }
+    .fish figcaption { font-size: 0.8rem; margin-top: 0.4rem; color: rgba(255,255,255,0.75); }
+    .fish figure:first-child figcaption { color: var(--cyan); font-weight: 600; }
+    .big-stat { display: flex; align-items: center; gap: 1rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.15); }
+    .big-stat .num { font-family: 'DM Serif Display', Georgia, serif; font-size: 3.2rem; line-height: 1; color: var(--cyan); }
+    .big-stat strong { display: block; font-size: 0.95rem; }
+    .big-stat span { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+
+    /* WORKING WITH YOU (slide 5) */
+    .work { background: var(--white); }
+    .work-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 1.25rem; }
+    .work-step { background: var(--ice-lt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.4rem; }
+    .work-step .n { width: 34px; height: 34px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; margin-bottom: 0.9rem; }
+    .work-step:nth-child(1) .n { background: var(--navy); }
+    .work-step:nth-child(2) .n { background: var(--teal); }
+    .work-step:nth-child(3) .n { background: #4a7a3a; }
+    .work-step:nth-child(4) .n { background: var(--cyan); }
+    .work-step h3 { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+    .work-step p { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+    .paths-title { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.6rem; color: var(--navy); margin: 3.5rem 0 1.25rem; }
+    .stat-strip-inner { flex-wrap: nowrap; }
+    .stat-item { padding: 0.5rem 2rem; }
+    .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .path { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem 1.5rem; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s; }
+    a.path:hover { box-shadow: 0 8px 30px rgba(33,58,93,0.12); transform: translateY(-3px); }
+    .path-kicker { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.5rem; }
+    .path h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .path p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .path .more { display: inline-block; margin-top: 0.8rem; font-size: 0.82rem; font-weight: 600; color: var(--teal-lt); }
+    .path.talk { background: var(--navy); border-color: var(--navy); }
+    .path.talk h3 { color: #fff; }
+    .path.talk p { color: rgba(255,255,255,0.75); }
+    .path.talk a { color: #fff; font-weight: 700; text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .who-grid, .ev-grid { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .step:nth-child(2)::after { display: none; }
+      .integrated { grid-template-columns: 1fr; gap: 1rem; }
+      .work-steps { grid-template-columns: 1fr 1fr; }
+      .paths { grid-template-columns: 1fr; }
+      .stat-strip-inner { flex-wrap: wrap; }
+        .stat-item { padding: 0.5rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1rem; }
+      .hero-content { padding: 7rem 1rem 3rem; }
+      .flow { grid-template-columns: 1fr; gap: 2rem; }
+      .step:not(:last-child)::after { content: '↓'; display: block; top: auto; bottom: -1.75rem; right: auto; left: 50%; transform: translateX(-50%); }
+      .work-steps { grid-template-columns: 1fr; }
+      .chart { grid-template-rows: 160px auto; }
+    }
+
+    .flowC { display: grid; grid-template-columns: 0.8fr 1.6fr 1.6fr 0.8fr; gap: 1.25rem; align-items: stretch; }
+    .endcap { padding: 1.5rem 0.25rem; display: flex; flex-direction: column; }
+    .endcap .k { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+    .endcap h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.45rem; color: var(--navy); line-height: 1.15; margin-bottom: 0.4rem; }
+    .endcap p { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; }
+    .endcap ul { list-style: none; border-top: 1px solid var(--border); padding-top: 0.9rem; }
+    .endcap li { font-size: 0.8rem; color: var(--text); padding: 0.28rem 0; line-height: 1.45; }
+    .endcap.right { text-align: left; border-left: 3px solid var(--cyan); padding-left: 1.1rem; }
+    .endcap.left { border-right: 1px dashed var(--border); padding-right: 1.1rem; }
+    .tech { border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 18px 50px rgba(33,58,93,0.16); }
+    .tech.pure { background: var(--navy); }
+    .tech.rna { background: var(--teal); }
+    .tech-img { height: 210px; background-size: cover; background-position: center; position: relative; }
+    .tech-img .tag { position: absolute; left: 1.25rem; bottom: 1rem; background: rgba(255,255,255,0.95); color: var(--navy); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.7rem; border-radius: 999px; }
+    .tech-body { padding: 1.6rem 1.6rem 1.8rem; color: #fff; flex: 1; display: flex; flex-direction: column; }
+    .tech-body h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 2.1rem; line-height: 1; margin-bottom: 0.4rem; }
+    .tech-body .sub { font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 1.1rem; }
+    .tech-body ul { list-style: none; }
+    .tech-body li { position: relative; padding-left: 1.4rem; font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.55rem; color: rgba(255,255,255,0.92); }
+    .tech-body li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+    .tech.rna li::before { color: #fff; }
+    .tech-body .lnk { margin-top: auto; padding-top: 0.8rem; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .plus { display: none; }
+    @media (max-width: 900px) { .flowC { grid-template-columns: 1fr 1fr; } .endcap.left { border-right: none; } }
+    @media (max-width: 600px) { .flowC { grid-template-columns: 1fr; } }
+
+
+    /* TESTIMONIALS — carousel */
+    .voices { background: var(--ice-lt); }
+    .voices .section-head { text-align: center; margin-left: auto; margin-right: auto; }
+    .carousel { position: relative; max-width: 900px; margin: 0 auto; }
+    .carousel-viewport { overflow: hidden; }
+    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(.4,0,.2,1); }
+    .slide { flex: 0 0 100%; padding: 0 3.5rem; text-align: center; margin: 0; }
+    .slide .qmark { font-family: 'DM Serif Display', Georgia, serif; font-size: 4.5rem; line-height: 0.6; color: var(--cyan); display: block; height: 2.2rem; }
+    .slide blockquote { font-style: italic; margin: 1rem 0 2rem; font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.25rem, 2.2vw, 1.65rem); line-height: 1.5; color: var(--navy); }
+    .slide figcaption strong { display: block; font-size: 1rem; color: var(--navy); }
+    .slide figcaption span { display: block; font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+    .slide figcaption .org { color: var(--teal); font-weight: 600; }
+    .car-btn { position: absolute; top: 40%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); color: var(--navy); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(33,58,93,0.08); transition: background 0.2s, color 0.2s; }
+    .car-btn:hover, .car-btn:focus-visible { background: var(--navy); color: var(--white); outline: none; }
+    .car-btn.prev { left: 0; } .car-btn.next { right: 0; }
+    .car-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 2.2rem; }
+    .car-dots button { width: 10px; height: 10px; border-radius: 999px; border: none; padding: 0; background: #c5d9e4; cursor: pointer; transition: width 0.3s, background 0.3s; }
+    .car-dots button[aria-current="true"] { width: 28px; background: var(--cyan); }
+    @media (max-width: 600px) { .slide { padding: 0 0.25rem; } .car-btn { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .carousel-track { transition: none; } }
+
+    /* VARIANT: white product cards */
+    .tech.pure, .tech.rna { background: var(--white) !important; border: 1px solid var(--border); border-top: 3px solid var(--navy); }
+    .tech.rna { border-top-color: var(--teal); }
+    .tech-body { color: var(--text) !important; }
+    .tech-body h3 { color: var(--navy) !important; }
+    .tech.rna .tech-body h3 { color: var(--teal) !important; }
+    .tech-body .sub { color: var(--muted) !important; }
+    .tech-body li { color: var(--text) !important; }
+    .tech-body li::before { color: var(--cyan) !important; }
+    .tech-body .lnk { color: var(--navy) !important; text-decoration-color: var(--cyan); }
+    .tech { box-shadow: 0 18px 44px -20px rgba(33,58,93,0.28) !important; }
   </style>
 </head>
 <body>
@@ -606,13 +799,15 @@
   </a>
   <ul class="nav-links">
     <li><a href="#mission">Company</a></li>
-    <li><a href="artpure.html">ArtPure™</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#evidence">Evidence</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="events.html">Events</a></li>
     <li><a href="order.html" class="nav-cta">Order</a></li>
   </ul>
 </nav>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -623,9 +818,9 @@
   <div class="hero-content">
     <div class="hero-badge">Reykjavik, Iceland · Founded 2021</div>
     <h1>The <em>Quality</em> RNA Company</h1>
-    <p>Built on our proprietary ArtPure™ technology, Ternaria delivers the purity and performance modern therapeutics demand at every step of mRNA production. Through continuous innovation and uncompromising purity, we enable high-quality mRNA that performs consistently.</p>
+    <p>One integrated platform, from your therapeutic goal to high-quality mRNA, with scalability and supply security built into every step.</p>
     <div class="hero-actions">
-      <a href="artpure.html" class="btn-primary">ArtPure™ Platform →</a>
+      <a href="#platform" class="btn-primary">How it works →</a>
       <a href="#products" class="btn-outline">Explore Products</a>
     </div>
   </div>
@@ -654,87 +849,174 @@
   </div>
 </div>
 
-<!-- MISSION -->
-<section class="mission" id="mission">
+<!-- WHO WE ARE (Company Overview, slide 2) -->
+<section class="who" id="mission">
   <div class="container">
-    <div class="mission-grid">
+    <div class="mission-grid who-top">
       <div class="mission-img">
-        <img src="https://static.wixstatic.com/media/f7ef05_be1da95e1ad0413aa79169d8d82687c0~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f7ef05_be1da95e1ad0413aa79169d8d82687c0~mv2.jpg" alt="Ternaria lab" />
+        <img src="https://static.wixstatic.com/media/f7ef05_be1da95e1ad0413aa79169d8d82687c0~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f7ef05_be1da95e1ad0413aa79169d8d82687c0~mv2.jpg" alt="Icelandic coastline" />
       </div>
       <div class="mission-text">
         <p class="section-label">Who we are</p>
-        <h2 class="section-title">The quality layer for RNA innovation</h2>
-        <p class="section-body">Founded in 2021 in Reykjavík, Ternaria Biosciences develops enabling technologies that improve RNA-based therapeutics. Built on our ArtPure™ technology, our enzymes and mRNA solutions are engineered to deliver the accuracy, precision, and consistency that safe, effective RNA therapies demand — translating into fewer side effects and more predictable outcomes for patients.</p>
-        <p class="section-body" style="margin-top:1rem;">We focus on the upstream technologies that shape every downstream result. By engineering higher-performing enzymes and optimized mRNA, we help researchers and developers improve yield, reproducibility, and scalability — whether in discovery, process development, or manufacturing.</p>
-        <p class="section-body" style="margin-top:1rem;">Our customers span academia, biotechnology, pharmaceutical development, and manufacturing, united by one goal: delivering reproducible and accurate RNA function in cellular context.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem; display:inline-flex;">Get in touch</a>
+        <h2 class="section-title">Engineering quality into mRNA performance</h2>
+        <p class="section-body">Ternaria designs the quality layer for therapeutic mRNA. How an mRNA is designed and produced shapes how it performs in the body, from potency to safety to reproducibility.</p>
+      </div>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <h3>Why it matters</h3>
+        <p>RNA performance is shaped long before it reaches the cell. RNA polymerase purity, IVT performance and construct design work together to determine <strong>RNA quality, translation, potency and safety</strong>.</p>
+      </div>
+      <div class="who-card">
+        <h3>What we do</h3>
+        <p>We bring RNA design, enzyme innovation, and production together. We develop and manufacture <strong>ultra-pure RNA polymerases</strong> and <strong>purpose-built mRNA</strong>, powered by our proprietary platform that enables the <strong>next generation of RNA technologies</strong>.</p>
+      </div>
+      <div class="who-card">
+        <h3>Who we serve</h3>
+        <p>We work with teams <strong>pushing RNA further</strong>, from academic research and therapeutic development to pharma R&amp;D, manufacturing partners and CDMOs, across <strong>vaccines, oncology and rare disease</strong>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TWO PATHWAYS -->
-<section class="artpure" id="platform">
+<!-- PLATFORM (slide 3) -->
+<section class="platform" id="platform">
   <div class="container">
-    <p class="section-label">Our technology</p>
-    <h2 class="section-title">ArtPure™<br><em>One platform, <span style="color:var(--cyan);">two paths.</span></em></h2>
-    <p class="section-body">ArtPure™ is Ternaria's proprietary technology platform — with the shared foundation of purity behind everything we build, from ultra-pure enzymes to novel enzyme discovery and cell-specific mRNA design.</p>
-    <div class="artpure-pillars">
-
-      <div class="pillar">
-        <img class="pillar-img" src="https://static.wixstatic.com/media/2ff737_edfe09e45d7f421fbf86f3e206a9ef11~mv2.jpg/v1/crop/x_675,y_0,w_2699,h_2699/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/skogafoss-best-iceland-waterfalls-picjumbo-com.jpg" alt="Skógafoss waterfall, Iceland" style="object-position: 50% 27%;" />
-        <span class="pillar-num">01</span>
-        <div class="pillar-top">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Partnerships &amp; Licensing</h3>
-        </div>
-        <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.6rem;">Built around your needs</p>
-        <div class="pillar-item">
-          <span class="dot"></span>
-          <div>
-            <strong>ArtZymeAI™</strong>
-            <span>Novel enzyme discovery, tailored to your application — engineered enzymes that solve the production challenges of specific mRNA constructs.</span>
-          </div>
-        </div>
-        <div class="pillar-item">
-          <span class="dot"></span>
-          <div>
-            <strong>ArtRNA</strong>
-            <span>Tailored mRNA design for cell-type-specific <em>in vivo</em> function — engineered to match your target tissue and therapeutic goal.</span>
-          </div>
-        </div>
-        <a href="artpure.html" class="pillar-link">See how it works <span>→</span></a>
+    <div class="section-head">
+      <p class="section-label">What we offer</p>
+      <h2 class="section-title">From your goal to your <em>therapeutic solution</em></h2>
+    </div>
+    <div class="flowC">
+      <div class="endcap left">
+        <div class="k">Start</div>
+        <h3>Your goal</h3>
+        <p>The therapeutic outcome the mRNA must deliver</p>
+        <ul><li>Target tissue and cell type</li><li>Protein or antigen to express</li><li>Combination of delivery system</li><li>Indication and modality</li></ul>
       </div>
-
-      <div class="pillar">
-        <img class="pillar-img" src="https://images.unsplash.com/photo-1519092437326-bfd121eb53ae?auto=format&fit=crop&w=800&h=400&q=80" alt="Icelandic landscape" />
-        <span class="pillar-num">02</span>
-        <div class="pillar-top">
-          <div class="pillar-icon">
-            <svg viewBox="0 0 24 24"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
-          </div>
-          <h3>Ready to order</h3>
+      <div class="tech pure">
+        <div class="tech-img" style="background-image:url('images/products-arterna/t7-hand-holding-1.jpg')"><span class="tag">Produce</span></div>
+        <div class="tech-body">
+          <h3>ArtPure™</h3>
+          <p class="sub">Optimal IVT reaction with proprietary enzymes</p>
+          <ul>
+            <li>&gt;99% pure, animal-origin-free RNA polymerases</li>
+            <li>Higher mRNA yield, less dsRNA by-products</li>
+            <li>Increased protein translation <em>in vivo</em></li>
+            <li>Novel enzymes powered by ArtZymeAI™ where a construct demands it</li>
+          </ul>
+          <a class="lnk" href="artpure.html">More about ArtPure™ →</a>
         </div>
-        <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.6rem;">RNA enzymes &amp; <span style="text-transform:none;">mRNA</span>, in stock</p>
-        <div class="pillar-item">
-          <span class="dot"></span>
-          <div>
-            <strong>RNA Enzymes</strong>
-            <span>&gt;99% purity, animal-origin free, no protease, RNase or DNase contamination. Room-temperature stable — no cold-chain required. Available in complete IVT kits for fully capped mRNA.</span>
-          </div>
-        </div>
-        <div class="pillar-item">
-          <span class="dot"></span>
-          <div>
-            <strong>Fluorescent &amp; custom-made mRNA</strong>
-            <span>Produced to your sequence and ready to ship, with a room-temperature shipping option available.</span>
-          </div>
-        </div>
-        <a href="#products" class="pillar-link">Browse products <span>→</span></a>
       </div>
+      <div class="tech rna">
+        <div class="tech-img" style="background-image:url('images/validation/confocal-mcf7-crop.jpg')"><span class="tag">Design</span></div>
+        <div class="tech-body">
+          <h3>ArtRNA™</h3>
+          <p class="sub">Optimal design and function</p>
+          <ul>
+            <li>Coding sequence and UTRs designed for cell-type-specific <em>in vivo</em> function</li>
+            <li>Cap analog and modified nucleotides of choice</li>
+            <li>Engineered for your target tissue and goal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="endcap right">
+        <div class="k">Result</div>
+        <h3>Your solution</h3>
+        <p>High-quality mRNA for any therapeutic application</p>
+        <ul><li>Optimal expression <em>in vivo</em></li><li>Tissue specificity in protein expression</li><li>Minimized side-effects</li><li>Reproducible and reliable results</li></ul>
+      </div>
+    </div>
+    <div class="integrated">
+      <div class="integrated-label">Integrated in<br>every step</div>
+      <div class="int-item"><span class="int-dot" style="background:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><strong style="color:var(--cyan)">Quality</strong><span>One purity standard from enzyme to finished transcript</span></div></div>
+      <div class="int-item"><span class="int-dot" style="background:var(--teal)"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></span><div><strong style="color:var(--teal)">Scalability</strong><span>From research-grade quantities to larger production runs</span></div></div>
+      <div class="int-item"><span class="int-dot" style="background:var(--navy)"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><div><strong style="color:var(--navy)">Supply security</strong><span>Proprietary enzymes, in room-temperature stable formats</span></div></div>
+    </div>
+    <h3 class="paths-title">Ways to work with us</h3>
+    <div class="paths">
+      <a class="path" href="#contact">
+        <div class="path-kicker">Path 1 · Built around you</div>
+        <h3>Partnerships &amp; licensing</h3>
+        <p>Construct design and enzyme development for your programme, with Ternaria as your long-term partner.</p>
+        <span class="more">Discuss a partnership →</span>
+      </a>
+      <a class="path" href="#products">
+        <div class="path-kicker">Path 2 · Ready to order</div>
+        <h3>Custom &amp; catalogue supply</h3>
+        <p>Custom mRNA to your specification, ArtPure™ polymerases and complete IVT kits.</p>
+        <span class="more">Browse products →</span>
+      </a>
+      <div class="path talk">
+        <div class="path-kicker">Let's talk</div>
+        <h3>Send us your requirements</h3>
+        <p><a href="mailto:sales@ternariabio.com">sales@ternariabio.com</a><br>ternariabio.com · Reykjavík, Iceland</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- EVIDENCE (slide 4) -->
+<section class="evidence" id="evidence">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label">The evidence</p>
+      <h2 class="section-title">Innovation and design. <em>Stronger expression</em></h2>
+    </div>
+    <div class="ev-grid">
+      <div class="ev-card">
+        <div class="ev-kicker">01 · Yield</div>
+        <h3>Increased RNA yield</h3>
+        <p class="ev-sub">Head-to-head vs. two leading suppliers</p>
+        <div class="chart"><div class="y-title"><span>µg RNA / µL reaction</span></div><div class="y-ticks"><span style="bottom:0.00%">0</span><span style="bottom:25.00%">2.5</span><span style="bottom:50.00%">5.0</span><span style="bottom:75.00%">7.5</span><span style="bottom:100.00%">10</span></div><div class="plot"><div class="grid"><i style="bottom:25.00%"></i><i style="bottom:50.00%"></i><i style="bottom:75.00%"></i><i style="bottom:100.00%"></i></div><div class="bars"><div class="bar us"><div class="bar-fill" style="height:77.00%"><span class="bar-val">7.7</span></div></div><div class="bar"><div class="bar-fill" style="height:49.00%"><span class="bar-val">4.9</span></div></div><div class="bar"><div class="bar-fill" style="height:18.00%"><span class="bar-val">1.8</span></div></div></div></div><div></div><div></div><div class="bar-names"><span>Ternaria</span><span>Supplier A</span><span>Supplier B</span></div></div>
+        <p class="ev-unit">Higher is better</p>
+      </div>
+      <div class="ev-card">
+        <div class="ev-kicker">02 · Purity</div>
+        <h3>Decreased dsRNA by-products</h3>
+        <p class="ev-sub">Head-to-head vs. two leading suppliers</p>
+        <div class="chart"><div class="y-title"><span>Relative dsRNA (fold of Ternaria)</span></div><div class="y-ticks"><span style="bottom:0.00%">0</span><span style="bottom:33.33%">1.0</span><span style="bottom:66.67%">2.0</span><span style="bottom:100.00%">3.0</span></div><div class="plot"><div class="grid"><i style="bottom:33.33%"></i><i style="bottom:66.67%"></i><i style="bottom:100.00%"></i></div><div class="bars"><div class="bar us"><div class="bar-fill" style="height:33.33%"><span class="bar-val">1.0</span></div></div><div class="bar"><div class="bar-fill" style="height:46.67%"><span class="bar-val">1.4</span></div></div><div class="bar"><div class="bar-fill" style="height:86.67%"><span class="bar-val">2.6</span></div></div></div></div><div></div><div></div><div class="bar-names"><span>Ternaria</span><span>Supplier A</span><span>Supplier B</span></div></div>
+        <p class="ev-unit">Lower is better</p>
+      </div>
+      <div class="ev-card">
+        <div class="ev-kicker">03 · In vivo</div>
+        <h3>Stronger protein expression</h3>
+        <p class="ev-sub">EGFP mRNA, equal amounts injected</p>
+        <div class="fish">
+          <figure><img src="zebrafish-ternaria-evidence.png" alt="Zebrafish embryo expressing EGFP from Ternaria mRNA" /><figcaption>Ternaria</figcaption></figure>
+          <figure><img src="images/validation/zebrafish-supplier-a.png" alt="Zebrafish embryo expressing EGFP from Supplier A mRNA" /><figcaption>Supplier A</figcaption></figure>
+        </div>
+        <div class="big-stat"><span class="num">&gt;2×</span><div><strong>increased expression</strong><span>across <em>in vitro</em> and <em>in vivo</em> models</span></div></div>
+        <p class="ev-note">Human cells · zebrafish embryos · salmon eggs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="voices" id="customers">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label">From our customers</p>
+      <h2 class="section-title">What our customers <em>say</em></h2>
+    </div>
+    <div class="carousel" aria-roledescription="carousel" aria-label="Customer testimonials">
+      <button class="car-btn prev" type="button" aria-label="Previous testimonial">&larr;</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 2">
+          <span class="qmark" aria-hidden="true">&ldquo;</span>
+          <blockquote>In our salmon embryo work, mRNA from Ternaria gave 74% EGFP-positive embryos, compared with 35% using mRNA from a leading commercial supplier. Ternaria has been a knowledgeable and responsive partner.</blockquote>
+          <figcaption><strong>Eduardo Rodriguez</strong><span>Head of Reproductive Technologies</span><span class="org">Benchmark Genetics</span></figcaption>
+        </figure>
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 2">
+          <span class="qmark" aria-hidden="true">&ldquo;</span>
+          <blockquote>Lyophilized Ternaria T7 polymerase performed equivalently or better than our in-house T7, which must be stored in glycerol at -80&nbsp;°C. Ternaria's ability to freeze dry T7 polymerase has distinct advantages for shipping and storage.</blockquote>
+          <figcaption><strong>Joseph Wedekind, PhD</strong><span>Professor, Dept. of Biochemistry and Biophysics</span><span class="org">University of Rochester School of Medicine and Dentistry</span></figcaption>
+        </figure>
+        </div>
+      </div>
+      <button class="car-btn next" type="button" aria-label="Next testimonial">&rarr;</button>
+      <div class="car-dots" role="tablist"></div>
     </div>
   </div>
 </section>
@@ -924,5 +1206,30 @@
   if (heroVideo) heroVideo.playbackRate = 0.7;
 </script>
 
+
+<script>
+(function(){
+  var c=document.querySelector('.carousel'); if(!c) return;
+  var track=c.querySelector('.carousel-track'), slides=c.querySelectorAll('.slide'), dots=c.querySelector('.car-dots');
+  var i=0, n=slides.length, timer=null, DELAY=7000;
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  for(var k=0;k<n;k++){(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show testimonial '+(k+1));b.onclick=function(){go(k);restart();};dots.appendChild(b);})(k);}
+  function go(k){i=(k+n)%n; track.style.transform='translateX('+(-100*i)+'%)';
+    dots.querySelectorAll('button').forEach(function(d,j){d.setAttribute('aria-current', j===i?'true':'false');});
+    slides.forEach(function(s,j){s.setAttribute('aria-hidden', j===i?'false':'true');});}
+  function start(){ if(!reduce && !timer) timer=setInterval(function(){go(i+1);},DELAY); }
+  function stop(){ clearInterval(timer); timer=null; }
+  function restart(){ stop(); start(); }
+  c.querySelector('.prev').onclick=function(){go(i-1);restart();};
+  c.querySelector('.next').onclick=function(){go(i+1);restart();};
+  c.addEventListener('mouseenter',stop); c.addEventListener('mouseleave',start);
+  c.addEventListener('focusin',stop); c.addEventListener('focusout',start);
+  var x0=null;
+  c.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;stop();},{passive:true});
+  c.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) go(dx<0?i+1:i-1); x0=null; start();});
+  document.addEventListener('visibilitychange',function(){ document.hidden?stop():start(); });
+  go(0); start();
+})();
+</script>
 </body>
 </html>
